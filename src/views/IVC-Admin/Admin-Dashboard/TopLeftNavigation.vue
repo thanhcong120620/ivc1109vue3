@@ -2,7 +2,7 @@
     <div>
 
        <!-- -------------------Left Bar------------------ -->
-        <aside :class="['left-sidebar', { open: isSidebarOpen }]" class="sidebar" data-sidebarbg="skin6">
+        <aside :class="['left-sidebar', { open: !isSidebarOpen }]" class="sidebar" data-sidebarbg="skin6">
       <div class="scroll-sidebar">
         <nav class="sidebar-nav">
           <ul id="sidebarnav">
@@ -638,7 +638,7 @@
       }
 
 
-      @media (max-width: 768px) {
+     /* @media (max-width: 768px) {
         .menu-toggle {
           display: block;
         }
@@ -655,7 +655,7 @@
         .top-bar {
           padding: 10px;
         }
-      }
+      } */
 
       .left-sidebar {
       transform: translateX(-100%); /* Ẩn sidebar */
