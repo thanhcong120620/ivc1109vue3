@@ -21,11 +21,12 @@
         data-boxed-layout="full"
       >
         <!-- ============================================================== -->
+         <Navigation />
         <!-- Topbar header - style you can find in pages.scss -->
-        <TopBar />
+        <!-- <TopBar /> -->
 
         <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <AsideLeft />
+        <!-- <AsideLeft /> -->
 
         <!-- Page wrapper  -->
         <PageWarper />
@@ -56,9 +57,11 @@
 </template>
 
 <script setup>
-import AsideLeft from '@/views/IVC-Admin/Admin-Dashboard/AsideLeft.vue'
+// import AsideLeft from '@/views/IVC-Admin/Admin-Dashboard/AsideLeft.vue'
 import PageWarper from '@/views/IVC-Admin/Admin-Dashboard/PageWraper.vue'
-import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
+// import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
+
+import Navigation from '@/views/IVC-Admin/Admin-Dashboard/TopLeftNavigation.vue'
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 

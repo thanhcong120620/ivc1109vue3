@@ -4,7 +4,9 @@
 </script>
 
 <template>
-  <main>
-    <!-- <AdminIndex /> -->
-  </main>
+ <div>
+    <h1>Welcome to CRM for Real Estate</h1>
+    <router-link to="/customers">Go to Customers</router-link>
+    <router-link to="/properties">Go to Properties</router-link>
+  </div>
 </template>

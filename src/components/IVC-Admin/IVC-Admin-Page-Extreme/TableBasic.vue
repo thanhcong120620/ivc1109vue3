@@ -1,0 +1,483 @@
+<template>
+    <div>    <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+        data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <TopBar />
+
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <AsideLeft />
+        <!-- ============================================================== -->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-5">
+                        <h4 class="page-title">Basic Table</h4>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-7">
+                        <div class="text-end upgrade-btn">
+                            <a href="https://www.wrappixel.com/templates/xtremeadmin/" class="btn btn-danger text-white"
+                                target="_blank">Upgrade to Pro</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Default Table</h4>
+                                <h6 class="card-subtitle">Using the most basic table markup, here’s how
+                                    <code>.table</code>-based tables look in Bootstrap. All table styles are inherited
+                                    in Bootstrap 4, meaning any nested tables will be styled in the same manner as the
+                                    parent.</h6>
+                                <h6 class="card-title m-t-40"><i
+                                        class="m-r-5 font-18 mdi mdi-numeric-1-box-multiple-outline"></i> Table With
+                                    Outside Padding</h6>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">#</th>
+                                                <th scope="col">First</th>
+                                                <th scope="col">Last</th>
+                                                <th scope="col">Handle</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">1</th>
+                                                <td>Mark</td>
+                                                <td>Otto</td>
+                                                <td>@mdo</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">2</th>
+                                                <td>Jacob</td>
+                                                <td>Thornton</td>
+                                                <td>@fat</td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">3</th>
+                                                <td>Larry</td>
+                                                <td>the Bird</td>
+                                                <td>@twitter</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <h6 class="card-title"><i
+                                        class="m-r-5 font-18 mdi mdi-numeric-2-box-multiple-outline"></i> Table Without
+                                    Outside Padding</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Table Header</h4>
+                                <h6 class="card-subtitle">Similar to tables, use the modifier classes .thead-light to
+                                    make <code>&lt;thead&gt;</code>s appear light.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Striped rows</h4>
+                                <h6 class="card-subtitle">Use <code>.table-striped</code> to add zebra-striping to any
+                                    table row within the <code>&lt;tbody&gt;</code>.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Larry</td>
+                                            <td>the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Boredered Table</h4>
+                                <h6 class="card-subtitle">Add <code>.table-bordered</code> for borders on all sides of
+                                    the table and cells.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td colspan="2">Larry the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Hoverable Rows</h4>
+                                <h6 class="card-subtitle">Add <code>.table-hover</code> to enable a hover state on table
+                                    rows within a <code>&lt;tbody&gt;</code>.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">First</th>
+                                            <th scope="col">Last</th>
+                                            <th scope="col">Handle</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Mark</td>
+                                            <td>Otto</td>
+                                            <td>@mdo</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Jacob</td>
+                                            <td>Thornton</td>
+                                            <td>@fat</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td colspan="2">Larry the Bird</td>
+                                            <td>@twitter</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Responsive tables</h4>
+                                <h6 class="card-subtitle">Responsive tables allow tables to be scrolled horizontally
+                                    with ease. Make any table responsive across all viewports by wrapping a
+                                    <code>.table</code> with <code>.table-responsive</code>. Or, pick a maximum
+                                    breakpoint with which to have a responsive table up to by using
+                                    <code>.table-responsive{-sm|-md|-lg|-xl}</code>.</h6>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                            <th scope="col">Heading</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                            <td>Cell</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table-responsive m-t-20">
+                                <table class="table table-bordered table-responsive-lg">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Table header</th>
+                                            <th scope="col">Table header</th>
+                                            <th scope="col">Table header</th>
+                                            <th scope="col">Table header</th>
+                                            <th scope="col">Table header</th>
+                                            <th scope="col">Table header</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">2</th>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">3</th>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                            <td>Table cell</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                All Rights Reserved by Xtreme Admin. Designed and Developed by <a
+                    href="https://www.wrappixel.com">WrapPixel</a>.
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div></div>
+</template>
+
+
+<script setup>
+import AsideLeft from '@/views/IVC-Admin/Admin-Dashboard/AsideLeft.vue'
+import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
+
+</script>
+
+<style scoped>
+/* <!-- Favicon icon --> */
+/* <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png"> */
+/* <!-- Custom CSS --> */
+@import '../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
+/* <!-- Custom CSS --> */
+@import '../../../assets/css/css-AdminSystem/SupperAdmin/style.min.css';
+
+/* 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// --> */
+/* <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]--> */
+
+/* Preload */
+/* @import '../../../assets/css/css-AdminSystem/SupperAdmin/spinner.css'; */
+</style>

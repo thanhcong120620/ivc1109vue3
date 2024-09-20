@@ -83,6 +83,7 @@ import { ref, onMounted } from 'vue'
 // Import hình ảnh
 import userImageSrc from '../../../assets/images/users/1.jpg'
 
+
 export default {
   name: 'SideBar',
   setup() {
@@ -99,17 +100,17 @@ export default {
     const upgradeLink = ref('https://www.wrappixel.com/templates/xtremeadmin/')
 
     const sidebarItems = ref([
-      { link: 'index.html', icon: 'mdi mdi-view-dashboard', label: 'Dashboard', isActive: false },
+      { link: '/admin-dashboard', icon: 'mdi mdi-view-dashboard', label: 'Dashboard', isActive: false },
       {
-        link: 'pages-profile.html',
+        link: '/pages-profile',
         icon: 'mdi mdi-account-network',
         label: 'Profile',
         isActive: false
       },
-      { link: 'table-basic.html', icon: 'mdi mdi-border-all', label: 'Table', isActive: false },
-      { link: 'icon-material.html', icon: 'mdi mdi-face', label: 'Icon', isActive: false },
-      { link: 'starter-kit.html', icon: 'mdi mdi-file', label: 'Blank', isActive: false },
-      { link: 'error-404.html', icon: 'mdi mdi-alert-outline', label: '404', isActive: false }
+      { link: '/table-basic', icon: 'mdi mdi-border-all', label: 'Table', isActive: false },
+      { link: '/icon-material', icon: 'mdi mdi-face', label: 'Icon', isActive: false },
+      { link: '/starter-kit', icon: 'mdi mdi-file', label: 'Blank', isActive: false },
+      { link: '/error-404', icon: 'mdi mdi-alert-outline', label: '404', isActive: false }
     ])
 
     const handleLinkClick = (event) => {
@@ -448,5 +449,49 @@ Down arrow
   -ms-transform: rotate(-135deg) translate(0, -50%);
   -o-transform: rotate(-135deg) translate(0, -50%);
   transform: rotate(-135deg) translate(0, -50%);
+}
+
+
+/* Test boostrap */
+.left-sidebar {
+  width: 250px; /* Thay đổi kích thước thanh bên nếu cần */
+}
+
+.scroll-sidebar {
+    overflow: hidden; /* Ẩn hoàn toàn thanh cuộn */
+}
+
+.user-profile {
+  padding: 1rem;
+}
+
+.user-content {
+  margin-left: 10px;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .left-sidebar {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .left-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .scroll-sidebar {
+    padding: 1rem;
+  }
 }
 </style>

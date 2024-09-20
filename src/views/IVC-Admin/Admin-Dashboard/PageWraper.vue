@@ -5,25 +5,26 @@
     <!-- ============================================================== -->
     <div class="page-breadcrumb">
       <div class="row align-items-center">
-        <div class="col-5">
+        <div class="col-12 col-md-6">
           <h4 class="page-title">Dashboard</h4>
           <div class="d-flex align-items-center">
             <nav aria-label="breadcrumb">
-              <ol class="breadcrumb">
+              <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Library</li>
               </ol>
             </nav>
           </div>
         </div>
-        <div class="col-7">
-          <div class="text-end upgrade-btn">
+        <div class="col-12 col-md-6 text-end">
+          <div class="upgrade-btn">
             <a
               href="https://www.wrappixel.com/templates/xtremeadmin/"
               class="btn btn-danger text-white"
               target="_blank"
-              >Upgrade to Pro</a
             >
+              Upgrade to Pro
+            </a>
           </div>
         </div>
       </div>
@@ -31,15 +32,11 @@
     <!-- ============================================================== -->
     <!-- End Bread crumb and right sidebar toggle -->
     <!-- ============================================================== -->
-    <!-- ============================================================== -->
     <!-- Container fluid  -->
     <!-- ============================================================== -->
     <div class="container-fluid">
-      <!-- ============================================================== -->
-      <!-- Sales chart -->
-      <!-- ============================================================== -->
       <div class="row">
-        <div class="col-md-8">
+        <div class="col-12 col-md-8">
           <div class="card">
             <div class="card-body">
               <div class="d-md-flex align-items-center">
@@ -47,45 +44,38 @@
                   <h4 class="card-title">Sales Summary</h4>
                   <h5 class="card-subtitle">Overview of Latest Month</h5>
                 </div>
-                <div class="ms-auto d-flex no-block align-items-center">
-                  <ul class="list-inline font-12 dl m-r-15 m-b-0">
-                    <li class="list-inline-item text-info"><i class="fa fa-circle"></i> Iphone</li>
-                    <li class="list-inline-item text-primary"><i class="fa fa-circle"></i> Ipad</li>
-                  </ul>
-                </div>
               </div>
               <div class="row">
-                <!-- column -->
-                <div class="col-lg-12">
-                  <div class="campaign ct-charts"></div>
+                <div class="col-12">
+                  <!-- <div class="campaign ct-charts"></div> -->
+                   <SaleChart />
                 </div>
-                <!-- column -->
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-12 col-md-4">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Feeds</h4>
               <div class="feed-widget">
-                <ul class="list-style-none feed-body m-0 p-b-20">
+                <ul class="list-style-none feed-body mb-0 pb-20">
                   <li class="feed-item">
                     <div class="feed-icon bg-info"><i class="far fa-bell"></i></div>
                     You have 4 pending tasks.
-                    <span class="ms-auto font-12 text-muted">Just Now</span>
+                    <span class="ms-auto text-muted font-12">Just Now</span>
                   </li>
                   <li class="feed-item">
                     <div class="feed-icon bg-success"><i class="ti-server"></i></div>
-                    Server #1 overloaded.<span class="ms-auto font-12 text-muted">2 Hours ago</span>
+                    Server #1 overloaded.<span class="ms-auto text-muted font-12">2 Hours ago</span>
                   </li>
                   <li class="feed-item">
                     <div class="feed-icon bg-warning"><i class="ti-shopping-cart"></i></div>
-                    New order received.<span class="ms-auto font-12 text-muted">31 May</span>
+                    New order received.<span class="ms-auto text-muted font-12">31 May</span>
                   </li>
                   <li class="feed-item">
                     <div class="feed-icon bg-danger"><i class="ti-user"></i></div>
-                    New user registered.<span class="ms-auto font-12 text-muted">30 May</span>
+                    New user registered.<span class="ms-auto text-muted font-12">30 May</span>
                   </li>
                 </ul>
               </div>
@@ -100,11 +90,9 @@
       <!-- Table -->
       <!-- ============================================================== -->
       <div class="row">
-        <!-- column -->
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <!-- title -->
               <div class="d-md-flex">
                 <div>
                   <h4 class="card-title">Top Selling Products</h4>
@@ -121,110 +109,44 @@
                   </div>
                 </div>
               </div>
-              <!-- title -->
             </div>
             <div class="table-responsive">
               <table class="table v-middle">
                 <thead>
                   <tr class="bg-light">
-                    <th class="border-top-0">Products</th>
-                    <th class="border-top-0">License</th>
-                    <th class="border-top-0">Support Agent</th>
-                    <th class="border-top-0">Technology</th>
-                    <th class="border-top-0">Tickets</th>
-                    <th class="border-top-0">Sales</th>
-                    <th class="border-top-0">Earnings</th>
+                    <th>Products</th>
+                    <th>License</th>
+                    <th>Support Agent</th>
+                    <th>Technology</th>
+                    <th>Tickets</th>
+                    <th>Sales</th>
+                    <th>Earnings</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>
                       <div class="d-flex align-items-center">
-                        <div class="m-r-10">
-                          <a class="btn btn-circle d-flex btn-info text-white">EA</a>
+                        <div class="me-3">
+                          <a class="btn btn-circle btn-info text-white">EA</a>
                         </div>
-                        <div class="">
-                          <h4 class="m-b-0 font-16">Elite Admin</h4>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Single Use</td>
-                    <td>John Doe</td>
-                    <td>
-                      <label class="label label-danger">Angular</label>
-                    </td>
-                    <td>46</td>
-                    <td>356</td>
-                    <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div class="m-r-10">
-                          <a class="btn btn-circle d-flex btn-orange text-white">MA</a>
-                        </div>
-                        <div class="">
-                          <h4 class="m-b-0 font-16">Monster Admin</h4>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Single Use</td>
-                    <td>Venessa Fern</td>
-                    <td>
-                      <label class="label label-info">Vue Js</label>
-                    </td>
-                    <td>46</td>
-                    <td>356</td>
-                    <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div class="m-r-10">
-                          <a class="btn btn-circle d-flex btn-success text-white">MP</a>
-                        </div>
-                        <div class="">
-                          <h4 class="m-b-0 font-16">Material Pro Admin</h4>
+                        <div>
+                          <h4 class="mb-0">Elite Admin</h4>
                         </div>
                       </div>
                     </td>
                     <td>Single Use</td>
                     <td>John Doe</td>
                     <td>
-                      <label class="label label-success">Bootstrap</label>
+                      <span class="badge bg-danger">Angular</span>
                     </td>
                     <td>46</td>
                     <td>356</td>
                     <td>
-                      <h5 class="m-b-0">$2850.06</h5>
+                      <h5 class="mb-0">$2850.06</h5>
                     </td>
                   </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex align-items-center">
-                        <div class="m-r-10">
-                          <a class="btn btn-circle d-flex btn-purple text-white">AA</a>
-                        </div>
-                        <div class="">
-                          <h4 class="m-b-0 font-16">Ample Admin</h4>
-                        </div>
-                      </div>
-                    </td>
-                    <td>Single Use</td>
-                    <td>John Doe</td>
-                    <td>
-                      <label class="label label-purple">React</label>
-                    </td>
-                    <td>46</td>
-                    <td>356</td>
-                    <td>
-                      <h5 class="m-b-0">$2850.06</h5>
-                    </td>
-                  </tr>
+                  <!-- Các hàng khác... -->
                 </tbody>
               </table>
             </div>
@@ -232,24 +154,20 @@
         </div>
       </div>
       <!-- ============================================================== -->
-      <!-- Table -->
-      <!-- ============================================================== -->
-      <!-- ============================================================== -->
       <!-- Recent comment and chats -->
       <!-- ============================================================== -->
       <div class="row">
-        <!-- column -->
-        <div class="col-lg-6">
+        <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Recent Comments</h4>
             </div>
-            <div class="comment-widgets scrollable">
+            <div class="comment-widgets">
               <!-- Comment Row -->
-              <div class="d-flex flex-row comment-row m-t-0">
+              <div class="d-flex flex-row comment-row mb-0">
                 <div class="p-2">
                   <img
-                    src="../../assets/images/users/1.jpg"
+                    src="../../../assets/images/users/1.jpg"
                     alt="user"
                     width="50"
                     class="rounded-circle"
@@ -257,90 +175,36 @@
                 </div>
                 <div class="comment-text w-100">
                   <h6 class="font-medium">James Anderson</h6>
-                  <span class="m-b-15 d-block"
-                    >Lorem Ipsum is simply dummy text of the printing and type setting industry.
-                  </span>
+                  <span class="d-block mb-2">Lorem Ipsum is simply dummy text of the printing and type setting industry.</span>
                   <div class="comment-footer">
                     <span class="text-muted float-end">April 14, 2021</span>
-                    <span class="label label-rounded label-primary">Pending</span>
+                    <span class="badge bg-primary">Pending</span>
                     <span class="action-icons">
-                      <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                      <a href="javascript:void(0)"><i class="ti-check"></i></a>
-                      <a href="javascript:void(0)"><i class="ti-heart"></i></a>
+                      <a href="#"><i class="ti-pencil-alt"></i></a>
+                      <a href="#"><i class="ti-check"></i></a>
+                      <a href="#"><i class="ti-heart"></i></a>
                     </span>
                   </div>
                 </div>
               </div>
-              <!-- Comment Row -->
-              <div class="d-flex flex-row comment-row">
-                <div class="p-2">
-                  <img
-                    src="../../assets/images/users/4.jpg"
-                    alt="user"
-                    width="50"
-                    class="rounded-circle"
-                  />
-                </div>
-                <div class="comment-text active w-100">
-                  <h6 class="font-medium">Michael Jorden</h6>
-                  <span class="m-b-15 d-block"
-                    >Lorem Ipsum is simply dummy text of the printing and type setting industry.
-                  </span>
-                  <div class="comment-footer">
-                    <span class="text-muted float-end">April 14, 2021</span>
-                    <span class="label label-success label-rounded">Approved</span>
-                    <span class="action-icons active">
-                      <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                      <a href="javascript:void(0)"><i class="icon-close"></i></a>
-                      <a href="javascript:void(0)"><i class="ti-heart text-danger"></i></a>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <!-- Comment Row -->
-              <div class="d-flex flex-row comment-row">
-                <div class="p-2">
-                  <img
-                    src="../../assets/images/users/5.jpg"
-                    alt="user"
-                    width="50"
-                    class="rounded-circle"
-                  />
-                </div>
-                <div class="comment-text w-100">
-                  <h6 class="font-medium">Johnathan Doeting</h6>
-                  <span class="m-b-15 d-block"
-                    >Lorem Ipsum is simply dummy text of the printing and type setting industry.
-                  </span>
-                  <div class="comment-footer">
-                    <span class="text-muted float-end">April 14, 2021</span>
-                    <span class="label label-rounded label-danger">Rejected</span>
-                    <span class="action-icons">
-                      <a href="javascript:void(0)"><i class="ti-pencil-alt"></i></a>
-                      <a href="javascript:void(0)"><i class="ti-check"></i></a>
-                      <a href="javascript:void(0)"><i class="ti-heart"></i></a>
-                    </span>
-                  </div>
-                </div>
-              </div>
+              <!-- Các comment khác... -->
             </div>
           </div>
         </div>
-        <!-- column -->
-        <div class="col-lg-6">
+        <div class="col-12 col-lg-6">
           <div class="card">
             <div class="card-body">
               <h4 class="card-title">Temp Guide</h4>
-              <div class="d-flex align-items-center flex-row m-t-30">
+              <div class="d-flex align-items-center flex-row mt-3">
                 <div class="display-5 text-info">
                   <i class="wi wi-day-showers"></i> <span>73<sup>°</sup></span>
                 </div>
-                <div class="m-l-10">
-                  <h3 class="m-b-0">Saturday</h3>
+                <div class="ms-3">
+                  <h3 class="mb-0">Saturday</h3>
                   <small>Ahmedabad, India</small>
                 </div>
               </div>
-              <table class="table no-border mini-table m-t-20">
+              <table class="table no-border mini-table mt-3">
                 <tbody>
                   <tr>
                     <td class="text-muted">Wind</td>
@@ -360,26 +224,26 @@
                   </tr>
                 </tbody>
               </table>
-              <ul class="row list-style-none text-center m-t-30">
+              <ul class="row list-style-none text-center mt-3">
                 <li class="col-3">
                   <h4 class="text-info"><i class="wi wi-day-sunny"></i></h4>
                   <span class="d-block text-muted">09:30</span>
-                  <h3 class="m-t-5">70<sup>°</sup></h3>
+                  <h3 class="mt-2">70<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                   <h4 class="text-info"><i class="wi wi-day-cloudy"></i></h4>
                   <span class="d-block text-muted">11:30</span>
-                  <h3 class="m-t-5">72<sup>°</sup></h3>
+                  <h3 class="mt-2">72<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                   <h4 class="text-info"><i class="wi wi-day-hail"></i></h4>
                   <span class="d-block text-muted">13:30</span>
-                  <h3 class="m-t-5">75<sup>°</sup></h3>
+                  <h3 class="mt-2">75<sup>°</sup></h3>
                 </li>
                 <li class="col-3">
                   <h4 class="text-info"><i class="wi wi-day-sprinkle"></i></h4>
                   <span class="d-block text-muted">15:30</span>
-                  <h3 class="m-t-5">76<sup>°</sup></h3>
+                  <h3 class="mt-2">76<sup>°</sup></h3>
                 </li>
               </ul>
             </div>
@@ -406,7 +270,16 @@
   </div>
 </template>
 
-<script setup></script>
+
+<script setup>
+// Import các thư viện JavaScript cần thiết cho component
+import 'jquery/dist/jquery.min';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
+import SaleChart from '@/views/IVC-Admin/Admin-Dashboard/SaleChart.vue'
+
+
+</script>
 
 <style scoped>
 /* <!-- Favicon icon --> */

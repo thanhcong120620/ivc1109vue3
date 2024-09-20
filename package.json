@@ -18,10 +18,12 @@
     "axios": "^1.7.4",
     "bootstrap": "^4.6.2",
     "bootstrap-vue-next": "^0.24.12",
+    "echarts": "^5.5.1",
     "pinia": "^2.1.7",
     "popper.js": "^1.16.1",
     "vee-validate": "^4.13.2",
     "vue": "^3.4.29",
+    "vue-echarts": "^7.0.3",
     "vue-router": "^4.4.3",
     "vuex": "^4.1.0",
     "yup": "^1.4.0"
@@ -35,7 +37,7 @@
     "eslint-plugin-vue": "^9.23.0",
     "jsdom": "^24.1.0",
     "prettier": "^3.2.5",
-    "vite": "^5.3.1",
+    "vite": "^5.4.4",
     "vitest": "^1.6.0"
   }
 }

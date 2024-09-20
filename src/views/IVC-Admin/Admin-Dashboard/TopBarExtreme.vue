@@ -11,10 +11,10 @@
             <b class="logo-icon">
               <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
               <!-- Dark Logo icon -->
-              <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+              <img src="../../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
               <!-- Light Logo icon -->
               <img
-                src="../../assets/images/logo-light-icon.png"
+                src="../../../assets/images/logo-light-icon.png"
                 alt="homepage"
                 class="light-logo"
               />
@@ -23,10 +23,10 @@
             <!-- Logo text -->
             <span class="logo-text">
               <!-- dark Logo text -->
-              <img src="../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+              <img src="../../../assets/images/logo-text.png" alt="homepage" class="dark-logo" />
               <!-- Light Logo text -->
               <img
-                src="../../assets/images/logo-light-text.png"
+                src="../../../assets/images/logo-light-text.png"
                 class="light-logo"
                 alt="homepage"
               />
@@ -80,7 +80,7 @@
                 aria-expanded="false"
               >
                 <img
-                  src="../../assets/images/users/1.jpg"
+                  src="../../../assets/images/users/1.jpg"
                   alt="user"
                   class="rounded-circle"
                   width="31"
