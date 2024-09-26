@@ -10,7 +10,7 @@ import PagesProfile from '../components/IVC-Admin/IVC-Admin-Page-Extreme/PagesPr
 import StarterKit from '../components/IVC-Admin/IVC-Admin-Page-Extreme/StarterKit.vue'
 
 //CRM Funtion
-import CustomersPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/CustomersPage.vue'
+import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
 import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
 
 const routes = [
@@ -55,7 +55,7 @@ const routes = [
 
 
   //CRM Function
-  { path: '/customers', component: CustomersPage },
+  { path: '/user-realestate-crm', component: UserRealEstateCRM },
   { path: '/properties', component: PropertiesPage },
 
 ]

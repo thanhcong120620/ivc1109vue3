@@ -20,6 +20,7 @@
                     data-bs-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
+                    @click="toggleDropdown"
                   >
                     <h5 class="m-b-0 user-name font-medium">
                       {{ userName }} <i class="fa fa-angle-down"></i>
@@ -197,116 +198,108 @@
     </div>
   </template>
   
-  <script>
-  import { ref, onMounted } from 'vue'
-  
-  // Import hình ảnh
-  import userImageSrc from '../../../assets/images/users/1.jpg'
-  
-  
-  export default {
+  <script setup>
+import { ref, onMounted } from 'vue';
 
-    
-    name: 'SideBar',
-    setup() {
-      const isSidebarOpen = ref(false); // Trạng thái sidebar
+// Import hình ảnh
+import userImageSrc from '../../../assets/images/users/1.jpg';
 
-    const toggleSidebar = () => {
-      isSidebarOpen.value = !isSidebarOpen.value; // Đảo trạng thái
-    };
-      // Sử dụng import để đảm bảo đường dẫn chính xác
-      const userImage = ref(userImageSrc)
-      const userProfileLink = ref('#')
-      const userName = ref('Steave Jobs')
-      const userEmail = ref('varun@gmail.com')
-      const profileLink = ref('#')
-      const balanceLink = ref('#')
-      const inboxLink = ref('#')
-      const settingsLink = ref('#')
-      const logoutLink = ref('#')
-      const upgradeLink = ref('https://www.wrappixel.com/templates/xtremeadmin/')
-  
-      const sidebarItems = ref([
-        { link: '/admin-dashboard', icon: 'mdi mdi-view-dashboard', label: 'Dashboard', isActive: false },
-        {
-          link: '/pages-profile',
-          icon: 'mdi mdi-account-network',
-          label: 'Profile',
-          isActive: false
-        },
-        { link: '/table-basic', icon: 'mdi mdi-border-all', label: 'Table', isActive: false },
-        { link: '/icon-material', icon: 'mdi mdi-face', label: 'Icon', isActive: false },
-        { link: '/starter-kit', icon: 'mdi mdi-file', label: 'Blank', isActive: false },
-        { link: '/error-404', icon: 'mdi mdi-alert-outline', label: '404', isActive: false }
-      ])
-  
-      const handleLinkClick = (event) => {
-        const clickedElement = event.currentTarget
-        const parentUl = clickedElement.closest('ul')
-  
-        if (!clickedElement.classList.contains('active')) {
-          parentUl.querySelectorAll('ul').forEach((ul) => ul.classList.remove('in'))
-          parentUl.querySelectorAll('a').forEach((a) => a.classList.remove('active'))
-          const nextUl = clickedElement.nextElementSibling
-          if (nextUl && nextUl.tagName === 'UL') {
-            nextUl.classList.add('in')
-          }
-          clickedElement.classList.add('active')
-        } else {
-          clickedElement.classList.remove('active')
-          const nextUl = clickedElement.nextElementSibling
-          if (nextUl && nextUl.tagName === 'UL') {
-            nextUl.classList.remove('in')
-          }
-        }
-      }
-  
-      const initSidebar = () => {
-        const url = new URL(window.location.href)
-        const path = url.pathname.slice(1)
-        const activeLink = Array.from(document.querySelectorAll('ul#sidebarnav a')).find(
-          (a) => a.href.endsWith(path) || a.href === url.href
-        )
-  
-        if (activeLink) {
-          let element = activeLink
-          while (element) {
-            if (element.tagName === 'LI') {
-              element.classList.add('active')
-              const link = element.querySelector('a')
-              if (link) link.classList.add('active')
-            } else if (element.tagName === 'UL') {
-              element.classList.add('in')
-            }
-            element = element.parentElement
-          }
-        }
-  
-        document.querySelectorAll('#sidebarnav a').forEach((link) => {
-          link.addEventListener('click', handleLinkClick)
-        })
-      }
-  
-      onMounted(initSidebar)
-  
-      return {
-        sidebarItems,
-        userImage,
-        userProfileLink,
-        userName,
-        userEmail,
-        profileLink,
-        balanceLink,
-        inboxLink,
-        settingsLink,
-        logoutLink,
-        upgradeLink,
-        isSidebarOpen,
-        toggleSidebar,
-      }
+// Trạng thái sidebar và dropdown
+const isSidebarOpen = ref(false);
+const dropdownOpen = ref(false);
+
+// Hàm đảo trạng thái sidebar
+const toggleSidebar = () => {
+  isSidebarOpen.value = !isSidebarOpen.value;
+};
+
+// Hàm toggle dropdown
+const toggleDropdown = (event) => {
+  event.preventDefault();
+  dropdownOpen.value = !dropdownOpen.value;
+  console.log("toggleSidebar: "+ dropdownOpen.value)
+};
+
+
+
+
+
+// Khai báo thông tin người dùng
+const userImage = ref(userImageSrc);
+const userProfileLink = ref('#');
+const userName = ref('Steave Jobs');
+const userEmail = ref('varun@gmail.com');
+const profileLink = ref('#');
+const balanceLink = ref('#');
+const inboxLink = ref('#');
+const settingsLink = ref('#');
+const logoutLink = ref('#');
+const upgradeLink = ref('https://www.wrappixel.com/templates/xtremeadmin/');
+
+// Các mục trong sidebar
+const sidebarItems = ref([
+  { link: '/admin-dashboard', icon: 'mdi mdi-view-dashboard', label: 'Dashboard', isActive: false },
+  { link: '/user-realestate-crm', icon: 'mdi mdi-contact-mail', label: 'UserRealestateCRM', isActive: false },
+  { link: '/pages-profile', icon: 'mdi mdi-account-network', label: 'Profile', isActive: false },
+  { link: '/table-basic', icon: 'mdi mdi-border-all', label: 'Table', isActive: false },
+  { link: '/icon-material', icon: 'mdi mdi-face', label: 'Icon', isActive: false },
+  { link: '/starter-kit', icon: 'mdi mdi-file', label: 'Blank', isActive: false },
+  { link: '/error-404', icon: 'mdi mdi-alert-outline', label: '404', isActive: false },
+]);
+
+// Hàm xử lý sự kiện click cho link
+const handleLinkClick = (event) => {
+  const clickedElement = event.currentTarget;
+  const parentUl = clickedElement.closest('ul');
+
+  if (!clickedElement.classList.contains('active')) {
+    parentUl.querySelectorAll('ul').forEach((ul) => ul.classList.remove('in'));
+    parentUl.querySelectorAll('a').forEach((a) => a.classList.remove('active'));
+    const nextUl = clickedElement.nextElementSibling;
+    if (nextUl && nextUl.tagName === 'UL') {
+      nextUl.classList.add('in');
+    }
+    clickedElement.classList.add('active');
+  } else {
+    clickedElement.classList.remove('active');
+    const nextUl = clickedElement.nextElementSibling;
+    if (nextUl && nextUl.tagName === 'UL') {
+      nextUl.classList.remove('in');
     }
   }
-  </script>
+};
+
+// Hàm khởi tạo sidebar
+const initSidebar = () => {
+  const url = new URL(window.location.href);
+  const path = url.pathname.slice(1);
+  const activeLink = Array.from(document.querySelectorAll('ul#sidebarnav a')).find(
+    (a) => a.href.endsWith(path) || a.href === url.href
+  );
+
+  if (activeLink) {
+    let element = activeLink;
+    while (element) {
+      if (element.tagName === 'LI') {
+        element.classList.add('active');
+        const link = element.querySelector('a');
+        if (link) link.classList.add('active');
+      } else if (element.tagName === 'UL') {
+        element.classList.add('in');
+      }
+      element = element.parentElement;
+    }
+  }
+
+  document.querySelectorAll('#sidebarnav a').forEach((link) => {
+    link.addEventListener('click', handleLinkClick);
+  });
+};
+
+// Sử dụng onMounted để khởi tạo sidebar sau khi component đã được gắn
+onMounted(initSidebar);
+</script>
+
   
   <style scoped>
   @import '../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
@@ -665,6 +658,7 @@
 .left-sidebar.open {
   transform: translateX(0); /* Hiển thị sidebar */
 }
+
 
   </style>
   
