@@ -13,6 +13,9 @@ import StarterKit from '../components/IVC-Admin/IVC-Admin-Page-Extreme/StarterKi
 import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
 import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
 
+//Element Desktop
+import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
+
 const routes = [
   { path: '/', component: Home },
 
@@ -57,6 +60,11 @@ const routes = [
   //CRM Function
   { path: '/user-realestate-crm', component: UserRealEstateCRM },
   { path: '/properties', component: PropertiesPage },
+
+
+  //Element desktop
+  { path: '/element-desktop', component: ElementDesktop },
+
 
 ]
 
