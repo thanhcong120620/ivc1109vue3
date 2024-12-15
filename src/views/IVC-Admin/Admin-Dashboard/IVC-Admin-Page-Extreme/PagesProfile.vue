@@ -4,15 +4,7 @@
     <!-- ============================================================== -->
     <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
         data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
-        <!-- ============================================================== -->
-
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <TopBar />
-
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <AsideLeft />
-        <!-- ============================================================== -->
+        <Navigation />
 
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
@@ -194,8 +186,7 @@
 
 
 <script setup>
-import AsideLeft from '@/views/IVC-Admin/Admin-Dashboard/AsideLeft.vue'
-import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
+import Navigation from '@/views/IVC-Admin/Admin-Dashboard/NavigationBar.vue'
 
 </script>
 
@@ -203,9 +194,9 @@ import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
 /* <!-- Favicon icon --> */
 /* <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png"> */
 /* <!-- Custom CSS --> */
-@import '../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
+@import '../../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
 /* <!-- Custom CSS --> */
-@import '../../../assets/css/css-AdminSystem/SupperAdmin/style.min.css';
+@import '../../../../assets/css/css-AdminSystem/SupperAdmin/style.min.css';
 
 /* 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

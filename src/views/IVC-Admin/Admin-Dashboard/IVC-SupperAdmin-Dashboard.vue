@@ -61,7 +61,7 @@
 import PageWarper from '@/views/IVC-Admin/Admin-Dashboard/PageWraper.vue'
 // import TopBar from '@/views/IVC-Admin/Admin-Dashboard/TopBarExtreme.vue'
 
-import Navigation from '@/views/IVC-Admin/Admin-Dashboard/TopLeftNavigation.vue'
+import Navigation from '@/views/IVC-Admin/Admin-Dashboard/NavigationBar.vue'
 
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 

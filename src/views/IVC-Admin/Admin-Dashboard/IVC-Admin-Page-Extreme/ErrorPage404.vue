@@ -53,9 +53,9 @@
 /* <!-- Favicon icon --> */
 /* <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png"> */
 /* <!-- Custom CSS --> */
-@import '../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
+@import '../../../../assets/css/css-AdminSystem/SupperAdmin/chartist.min.css';
 /* <!-- Custom CSS --> */
-@import '../../../assets/css/css-AdminSystem/SupperAdmin/style.min.css';
+@import '../../../../assets/css/css-AdminSystem/SupperAdmin/style.min.css';
 
 /* 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

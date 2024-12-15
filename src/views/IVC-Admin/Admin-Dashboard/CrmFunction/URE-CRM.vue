@@ -3,7 +3,14 @@
   <div>
     <!-- Header -->
     <div class="Header">
+
+      <div id="main-wrapper" data-layout="vertical" data-navbarbg="skin5" data-sidebartype="full"
+      data-sidebar-position="absolute" data-header-position="absolute" data-boxed-layout="full">
+
       <Navigation />
+
+      </div>
+       
     </div>
 
     <div class="container dashboard-container">      
@@ -212,7 +219,8 @@
 
 <script setup>
 import { ref } from 'vue';
-import Navigation from '@/views/IVC-Admin/Admin-Dashboard/TopLeftNavigation.vue'
+import Navigation from '@/views/IVC-Admin/Admin-Dashboard/NavigationBar.vue'
+
 
 const customers = ref([
   { name: "John Doe", email: "johndoe@example.com", phone: "+123 456 789", category: "VIP" },
