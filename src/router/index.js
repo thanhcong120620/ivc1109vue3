@@ -12,6 +12,13 @@ import StarterKit from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extrem
 //CRM Funtion
 import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
 import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
+import MKTEmail from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT.vue'
+import MKTTest from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/TestModal.vue'
+
+//CRM Funtion
+import IVCRealtorProject from '../views/IVC-Admin/Admin-Dashboard/ProjectManagement/IVCRealtorProject.vue'
+
+
 
 //Element Desktop
 import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
@@ -60,6 +67,13 @@ const routes = [
   //CRM Function
   { path: '/user-realestate-crm', component: UserRealEstateCRM },
   { path: '/properties', component: PropertiesPage },
+  { path: '/crm-markeing-email', component: MKTEmail },
+  { path: '/crm-markeing-test', component: MKTTest },
+
+
+  //Project Management
+  { path: '/ivc-realtor-projects', component: IVCRealtorProject },
+
 
 
   //Element desktop
