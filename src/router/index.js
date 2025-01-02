@@ -19,9 +19,17 @@ import MKTTest from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-
 import IVCRealtorProject from '../views/IVC-Admin/Admin-Dashboard/ProjectManagement/IVCRealtorProject.vue'
 
 
-
 //Element Desktop
 import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
+
+
+//---------------------------TEST------------------------------------
+//Components Test
+import AxiosTest from '../components/test/AxiosTest.vue'
+import GmailTest from '../components/test/GmailTest.vue'
+
+//------------------------------------------------------------------
+
 
 const routes = [
   { path: '/', component: Home },
@@ -78,6 +86,12 @@ const routes = [
 
   //Element desktop
   { path: '/element-desktop', component: ElementDesktop },
+
+
+//---------------------------TEST------------------------------------
+  //Components Test
+  { path: '/axios-test', component: AxiosTest },
+  { path: '/gmail-test', component: GmailTest },
 
 
 ]
