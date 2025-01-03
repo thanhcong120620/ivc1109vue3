@@ -4,7 +4,6 @@
       <h2 class="mb-4 text-center">IVC-Email Marketing</h2>
       <div class="row">
 
-
         <!-- DATA CONTROL -->
         <div class="col-12 col-md-8">
           <h3>Customer List</h3>

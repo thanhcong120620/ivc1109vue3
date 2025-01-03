@@ -13,10 +13,11 @@ import StarterKit from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extrem
 import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
 import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
 import MKTEmail from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT.vue'
-import MKTTest from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/TestModal.vue'
+
 
 //CRM Funtion
 import IVCRealtorProject from '../views/IVC-Admin/Admin-Dashboard/ProjectManagement/IVCRealtorProject.vue'
+import IVCCRMEmailMKTFormStandard from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/IVC-CRM-EmailMKT-FormStandard.vue'
 
 
 //Element Desktop
@@ -27,6 +28,7 @@ import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
 //Components Test
 import AxiosTest from '../components/test/AxiosTest.vue'
 import GmailTest from '../components/test/GmailTest.vue'
+import MKTTest from '../components/test/TestModal.vue'
 
 //------------------------------------------------------------------
 
@@ -76,7 +78,7 @@ const routes = [
   { path: '/user-realestate-crm', component: UserRealEstateCRM },
   { path: '/properties', component: PropertiesPage },
   { path: '/crm-markeing-email', component: MKTEmail },
-  { path: '/crm-markeing-test', component: MKTTest },
+  { path: '/IVC-CRM-EmailMKT-FormStandard', component: IVCCRMEmailMKTFormStandard },
 
 
   //Project Management
@@ -92,7 +94,7 @@ const routes = [
   //Components Test
   { path: '/axios-test', component: AxiosTest },
   { path: '/gmail-test', component: GmailTest },
-
+  { path: '/crm-markeing-test', component: MKTTest },
 
 ]
 
