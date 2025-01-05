@@ -12,12 +12,14 @@ import StarterKit from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extrem
 //CRM Funtion
 import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
 import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
-import MKTEmail from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT.vue'
 
 
-//CRM Funtion
+//CRM Email Funtion
 import IVCRealtorProject from '../views/IVC-Admin/Admin-Dashboard/ProjectManagement/IVCRealtorProject.vue'
 import IVCCRMEmailMKTFormStandard from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/IVC-CRM-EmailMKT-FormStandard.vue'
+import MKTEmail from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-Pannel.vue'
+
+
 
 
 //Element Desktop
@@ -29,6 +31,7 @@ import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
 import AxiosTest from '../components/test/AxiosTest.vue'
 import GmailTest from '../components/test/GmailTest.vue'
 import MKTTest from '../components/test/TestModal.vue'
+import MKTEmailNeumorphism from '../components/test/IVC-CRM-EmailMKT.vue'
 
 //------------------------------------------------------------------
 
@@ -95,6 +98,7 @@ const routes = [
   { path: '/axios-test', component: AxiosTest },
   { path: '/gmail-test', component: GmailTest },
   { path: '/crm-markeing-test', component: MKTTest },
+  { path: '/crm-markeing-email-neumorphism', component: MKTEmailNeumorphism },
 
 ]
 
