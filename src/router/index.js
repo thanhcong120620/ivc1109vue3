@@ -1,23 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
-// import AdminIndex from '../views/IVC-Admin/IVC-Admin-Index.vue'
-import AdminDashboard from '../views/IVC-Admin/Admin-Dashboard/IVC-SupperAdmin-Dashboard.vue'
-import TestBoostrap from '../components/test/TestBoostrap.vue'
-import TableBasic from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extreme/TableBasic.vue'
-import Error404 from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extreme/ErrorPage404.vue'
-import IconMaterial from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extreme/IconMaterial.vue'
-import PagesProfile from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extreme/PagesProfile.vue'
-import StarterKit from '../views/IVC-Admin/Admin-Dashboard/IVC-Admin-Page-Extreme/StarterKit.vue'
+
+
+
 
 //CRM Funtion
-import UserRealEstateCRM from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/URE-CRM.vue'
-import PropertiesPage from '../views/IVC-Admin/Admin-Dashboard/CrmFunction/PropertiesPage.vue'
 
 
 //CRM Email Funtion
-import IVCRealtorProject from '../views/IVC-Admin/Admin-Dashboard/ProjectManagement/IVCRealtorProject.vue'
-import IVCCRMEmailMKTFormStandard from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/IVC-CRM-EmailMKT-FormStandard.vue'
-import MKTEmail from '../views/IVC-Admin/Admin-Dashboard/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-Pannel.vue'
+import IVCRealtorProject from '../views/IVC-Admin/Admin-Realtor/Admin-Realtor-ProjectManagement/IVCRealtorProject.vue'
+import IVCCRMEmailMKTFormStandard from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/IVC-CRM-EmailMKT-FormStandard.vue'
+import MKTEmail from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-Pannel.vue'
 
 
 
@@ -40,46 +33,10 @@ const routes = [
   { path: '/', component: Home },
 
   //Admin Dashboard
-  {
-    path: '/admin-dashboard',
-    name: 'AdminDashboard',
-    component: AdminDashboard
-  },
-  {
-    path: '/test-boostrap',
-    name: 'TestBoostrap',
-    component: TestBoostrap
-  },
-  {
-    path: '/table-basic',
-    name: 'TableBasic',
-    component: TableBasic
-  },
-  {
-    path: '/error-404',
-    name: 'Error404',
-    component: Error404
-  },
-  {
-    path: '/icon-material',
-    name: 'IconMaterial',
-    component: IconMaterial
-  },
-  {
-    path: '/pages-profile',
-    name: 'PagesProfile',
-    component: PagesProfile
-  },
-  {
-    path: '/starter-kit',
-    name: 'StarterKit',
-    component: StarterKit
-  },
+
 
 
   //CRM Function
-  { path: '/user-realestate-crm', component: UserRealEstateCRM },
-  { path: '/properties', component: PropertiesPage },
   { path: '/crm-markeing-email', component: MKTEmail },
   { path: '/IVC-CRM-EmailMKT-FormStandard', component: IVCCRMEmailMKTFormStandard },
 
