@@ -5,6 +5,8 @@ import Home from '../views/HomeView.vue'
 
 
 //CRM Funtion
+import UserList from '../components/IVC-Admin/Admin-MKTDigital/CRM-Function/UserList.vue'
+
 
 
 //CRM Email Funtion
@@ -25,6 +27,7 @@ import AxiosTest from '../components/test/AxiosTest.vue'
 import GmailTest from '../components/test/GmailTest.vue'
 import MKTTest from '../components/test/TestModal.vue'
 import MKTEmailNeumorphism from '../components/test/IVC-CRM-EmailMKT.vue'
+
 
 //------------------------------------------------------------------
 
@@ -50,12 +53,15 @@ const routes = [
   { path: '/element-desktop', component: ElementDesktop },
 
 
-//---------------------------TEST------------------------------------
+//-----------------------------------------------------------TEST--------------------------------------------------------
   //Components Test
   { path: '/axios-test', component: AxiosTest },
   { path: '/gmail-test', component: GmailTest },
   { path: '/crm-markeing-test', component: MKTTest },
   { path: '/crm-markeing-email-neumorphism', component: MKTEmailNeumorphism },
+  { path: '/test-user-list', component: UserList },
+
+  
 
 ]
 
