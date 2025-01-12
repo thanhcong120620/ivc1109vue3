@@ -74,7 +74,7 @@
   
           // Gửi POST request đến backend Spring Boot
           const res = await axios.post(
-            "http://localhost:8081/api/send-all-gmailformstandard",
+            "http://localhost:8080/api/send-all-gmailformstandard",
             data,
             {
               headers: {

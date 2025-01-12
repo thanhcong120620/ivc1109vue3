@@ -34,7 +34,7 @@
     methods: {
       async sendData() {
         try {
-          const res = await axios.post("http://localhost:8081/api/send", this.formData, {
+          const res = await axios.post("http://localhost:8080/api/send", this.formData, {
             headers: {
               "Content-Type": "application/json",
             },

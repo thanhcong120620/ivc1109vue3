@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8081/users";
+const BASE_URL = "http://localhost:8080/users";
 
 const userService = {
   // Lấy danh sách người dùng
