@@ -1,0 +1,187 @@
+        <div class="email-container">
+          <div class="header">
+            <!-- Logo hoặc hình ảnh có thể được thêm vào ở đây -->
+          </div>
+          <div class="content">
+            <!-- Greeting -->
+            <h3>{{ formData.greeting || paragraph0 }}</h3>
+            <div style="height: 20px"></div>
+  
+            <!-- 1 image, 1 para, 1 para -->
+            <div class="section glass">
+              <!-- Hiển thị hình ảnh đầu tiên nếu có -->
+              <div v-if="formData.imageURLs[0]">
+                <img :src="formData.imageURLs[0]" alt="Hình ảnh 1" />
+              </div>
+              <!-- Hiển thị hình ảnh mặc định nếu chưa có -->
+              <div v-else>
+                <img src="https://images.unsplash.com/photo-1506748686219-2efb90e8e9fb" alt="Hình ảnh mặc định 1" />
+              </div>
+              <div style="height: 20px"></div>
+              <p>{{ formData.content1 || paragraph1 }}</p>
+              <br /><br />
+              <p>{{ formData.content2 || paragraph2 }}</p>
+            </div>
+  
+            <div style="height: 20px"></div>
+  
+            <!-- 1 image, 1 para, 1 image, 1 para -->
+            <div class="section glass">
+              <!-- Hiển thị hình ảnh thứ hai nếu có -->
+              <div v-if="formData.imageURLs[1]">
+                <img :src="formData.imageURLs[1]" alt="Hình ảnh 2" />
+              </div>
+              <!-- Hiển thị hình ảnh mặc định nếu chưa có -->
+              <div v-else>
+                <img src="https://images.unsplash.com/photo-1514634957903-4d9fcbf0f6da" alt="Hình ảnh mặc định 2" />
+              </div>
+              <p>{{ formData.content3 || paragraph3 }}</p>
+              <div style="height: 20px"></div>
+              <!-- Hiển thị hình ảnh thứ ba nếu có -->
+              <div v-if="formData.imageURLs[2]">
+                <img :src="formData.imageURLs[2]" alt="Hình ảnh 3" />
+              </div>
+              <!-- Hiển thị hình ảnh mặc định nếu chưa có -->
+              <div v-else>
+                <img src="https://images.unsplash.com/photo-1506748686219-2efb90e8e9fb" alt="Hình ảnh mặc định 3" />
+              </div>
+              <p>{{ formData.content4 || paragraph4 }}</p>
+            </div>
+  
+            <!-- Contact -->
+            <a href="https://zalo.me/0931901206" target="_blank" class="golden-btn">Liên hệ ngay</a>
+          </div>
+          <div class="footer">
+            <p>NGUYỄN THÀNH CÔNG | Bất động sản cao cấp Đà Nẵng | Điện thoại: 0931 901 206</p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------- STYLE CHO .model -------------- */
+  .model {
+    width: 100%;
+    padding-right: 20px; /* Khoảng cách bên phải */
+  }
+  
+  .email-container {
+    width: 100%;
+    max-width: 600px; /* Giới hạn chiều rộng của email container */
+    margin: 20px auto;
+    padding: 0;
+    border: 2px solid #d4af37;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 1%, transparent 1%),
+      radial-gradient(circle, rgba(255, 215, 0, 0.2) 2%, transparent 2%),
+      radial-gradient(circle, rgba(255, 215, 0, 0.2) 3%, transparent 3%),
+      radial-gradient(circle, rgba(255, 215, 0, 0.2) 4%, transparent 4%), white;
+    background-size: 20px 20px, 40px 40px, 60px 60px, 80px 80px, 100% 100%;
+    background-blend-mode: multiply;
+  }
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 40px;
+    color: #333;
+  }
+  
+  .header {
+    text-align: center;
+    padding: 10px;
+    background-color: #030303;
+    color: #ffffff;
+  }
+  
+  .header img {
+    max-width: 80%;
+    height: auto;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .section {
+    padding: 20px;
+    border-top: 1px solid #dddddd;
+  }
+  
+  .section:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .section img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .section h2 {
+    margin: 20px 0 10px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #212529;
+  }
+  
+  .section p {
+    margin: 10px 0;
+    color: #495057;
+    font-size: 16px;
+  }
+  
+  .footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40;
+    color: #ffffff;
+  }
+  
+  .footer p {
+    margin: 0;
+    font-size: 14px;
+  }
+
+.golden-btn {
+    display: flex;
+    width: fit-content;
+    height: auto;
+    margin: 20px auto;
+    font-family: inherit;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    font-size: 1em;
+    box-sizing: border-box;
+    /* padding: 0 1em; */
+    padding: 7px 7px 7px 7px;
+    background-image: linear-gradient(160deg, #a54e07, #b47e11, #fef1a2, #bc881b, #a54e07);
+    border: 1px solid #a55d07;
+    color: rgb(120, 50, 5);
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .golden-btn:focus,
+  .golden-btn:hover {
+    background-size: 150%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19);
+  }
+  
+  .golden-btn:active {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  }

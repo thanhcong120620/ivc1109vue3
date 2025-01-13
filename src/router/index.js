@@ -47,7 +47,7 @@ import ElementDesktop from '../components/Element-Desktop/ElementDesktop.vue'
 
 //CRM Email Funtion
 import IVCRealtorProject from '../views/IVC-Admin/Admin-Realtor/Admin-Realtor-ProjectManagement/IVCRealtorProject.vue'
-import IVCCRMEmailMKTFormStandard from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/IVC-CRM-EmailMKT-FormStandard.vue'
+import EmailMKTFormStandardPannel from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/EmailMKT-FormStandard-Pannel.vue'
 import MKTEmail from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-Pannel.vue'
 
 
@@ -96,7 +96,7 @@ const routes = [
 
   //CRM Function
   { path: '/crm-markeing-email', component: MKTEmail },
-  { path: '/IVC-CRM-EmailMKT-FormStandard', component: IVCCRMEmailMKTFormStandard },
+  { path: '/EmailMKT-FormStandard-pannel', component: EmailMKTFormStandardPannel },
 
   //Project Management
   { path: '/ivc-realtor-projects', component: IVCRealtorProject },

@@ -4,3 +4,12 @@
         <p>Use this page to start from scratch and place your custom content.</p>
     </div>
 </template>
+
+<script setup>
+//   import { ref } from 'vue';
+
+</script>
+  
+<style scoped>
+ 
+</style>
