@@ -1,6 +1,6 @@
-import { fileURLToPath, URL } from 'node:url'
-import { PrimeVueResolver } from '@primevue/auto-import-resolver';
-import Components from 'unplugin-vue-components/vite';
+// import { fileURLToPath, URL } from 'node:url'
+import { PrimeVueResolver } from '@primevue/auto-import-resolver'
+import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -10,14 +10,15 @@ export default defineConfig({
     vue(),
     Components({
       resolvers: [PrimeVueResolver()]
-  })
+    })
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+      // '@': fileURLToPath(new URL('./src', import.meta.url))
+      '@': '/src'
     }
   },
   define: {
-    global: {},
-  },
+    global: {}
+  }
 })
