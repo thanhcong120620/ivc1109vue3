@@ -45,14 +45,23 @@ import IVCRealtorProject from '../views/IVC-Admin/Admin-Realtor/Admin-Realtor-Pr
 import EmailMKTFormStandardPannel from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-ViewForm/EmailMKT-FormStandard-Pannel.vue'
 import MKTEmail from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CRM-View/IVC-CRM-EmailMKT-Pannel.vue'
 
+//Admin-Realtor-News
+import AdminRealtorNews from '../components/IVC-Admin/Admin-Realtor/Admin-Realtor-News/Admin-Realtor-News-View/NewsFeed.vue'
+import AdminRealtorNewsXMLProcess from '../components/IVC-Admin/Admin-Realtor/Admin-Realtor-News/Admin-Realtor-News-View/NewsFeed-XuLyXml.vue'
+
 //_____________________________________________________________________________________________________________________________________
 
 const routes = [
   { path: '/', component: Home },
 
+  //Admin-Realtor-News
+  { path: '/admin-realtor-news', component: AdminRealtorNews },
+  { path: '/admin-realtor-news-xu-ly-xml', component: AdminRealtorNewsXMLProcess },
+
   //Admin Dashboard
 
   //-----------------------------------------------------------TEST--------------------------------------------------------
+
   //Components Test
   { path: '/axios-test', component: AxiosTest },
   { path: '/gmail-test', component: GmailTest },
