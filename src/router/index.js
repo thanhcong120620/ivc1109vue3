@@ -30,6 +30,17 @@ import TableDoc from '../components/UniKit/TableDoc.vue'
 import TimelineDoc from '../components/UniKit/TimelineDoc.vue'
 import TreeDoc from '../components/UniKit/TreeDoc.vue'
 
+//Components landing page
+import LandingPage from '../components/UniKit/pages/LandingPage.vue'
+
+//Components Crud  page
+import CrudPage from '../components/UniKit/pages/CrudPage.vue'
+
+//Components auth page
+import AccessAuthPage from '../components/UniKit/pages/auth/AccessPage.vue'
+import ErrorPage from '../components/UniKit/pages/auth/ErrorPage.vue'
+import LoginPage from '../components/UniKit/pages/auth/LoginPage.vue'
+
 //------------------------------Component------------------------------------
 
 //CRM Funtion
@@ -48,6 +59,7 @@ import MKTEmail from '../views/IVC-Admin/Admin-MKTDigital/Marketing-Email/IVC-CR
 //Admin-Realtor-News
 import AdminRealtorNews from '../components/IVC-Admin/Admin-Realtor/Admin-Realtor-News/Admin-Realtor-News-View/NewsFeed.vue'
 import AdminRealtorNewsXMLProcess from '../components/IVC-Admin/Admin-Realtor/Admin-Realtor-News/Admin-Realtor-News-View/NewsFeed-XuLyXml.vue'
+import DanTriFrontDirectNotUseBackEnd from '../components/IVC-Admin/Admin-Realtor/Admin-Realtor-News/Admin-Realtor-News-View/DanTriFrontDirectNotUseBackEnd.vue'
 
 //_____________________________________________________________________________________________________________________________________
 
@@ -57,6 +69,10 @@ const routes = [
   //Admin-Realtor-News
   { path: '/admin-realtor-news', component: AdminRealtorNews },
   { path: '/admin-realtor-news-xu-ly-xml', component: AdminRealtorNewsXMLProcess },
+  {
+    path: '/admin-realtor-Dan-Tri-Front-Direct-Not-Use-BackEnd',
+    component: DanTriFrontDirectNotUseBackEnd
+  },
 
   //Admin Dashboard
 
@@ -89,6 +105,17 @@ const routes = [
   { path: '/table-doc', component: TableDoc }, //Cần cài lại API, Sakai cũng bị lỗi API
   { path: '/timeline-doc', component: TimelineDoc },
   { path: '/tree-doc', component: TreeDoc },
+
+  //Components landing-page
+  { path: '/landing-page', component: LandingPage },
+
+  //Components Auth-page
+  { path: '/access-auth-page', component: AccessAuthPage },
+  { path: '/error-auth-page', component: ErrorPage },
+  { path: '/login-auth-page', component: LoginPage },
+
+  //Components landing-page
+  { path: '/crud-page', component: CrudPage },
 
   //CRM Function
   { path: '/crm-markeing-email', component: MKTEmail },
