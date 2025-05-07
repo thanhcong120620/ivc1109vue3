@@ -39,7 +39,6 @@
     "vue-chartjs": "^3.5.1",
     "vue-echarts": "^7.0.3",
     "vue-router": "^4.4.3",
-    "vuex": "^4.1.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {

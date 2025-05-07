@@ -1,27 +1,27 @@
 <script setup>
-import { ref } from "vue";
-import { userService } from "@/services/userService";
+import { ref } from 'vue'
+import { userService } from '@/api/services/userService'
 
-const user = ref({ name: "", email: "" });
-const isEditing = ref(false);
+const user = ref({ name: '', email: '' })
+const isEditing = ref(false)
 
 async function saveUser() {
   try {
     if (isEditing.value) {
-      await userService.updateUser(user.value.id, user.value); // Gọi API cập nhật
+      await userService.updateUser(user.value.id, user.value) // Gọi API cập nhật
     } else {
-      await userService.createUser(user.value); // Gọi API thêm mới
+      await userService.createUser(user.value) // Gọi API thêm mới
     }
-    alert("Lưu user thành công!");
+    alert('Lưu user thành công!')
   } catch (err) {
-    console.error("Lỗi khi lưu user:", err);
+    console.error('Lỗi khi lưu user:', err)
   }
 }
 </script>
 
 <template>
   <div>
-    <h1>{{ isEditing ? "Cập nhật" : "Thêm mới" }} user</h1>
+    <h1>{{ isEditing ? 'Cập nhật' : 'Thêm mới' }} user</h1>
     <form @submit.prevent="saveUser">
       <div>
         <label for="name">Tên:</label>

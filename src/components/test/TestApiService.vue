@@ -1,29 +1,29 @@
 <script setup>
-import { ref, onMounted } from "vue";
-import { userService } from "@/services/userService"; // Import service
+import { ref, onMounted } from 'vue'
+import { userService } from '@/api/services/userService' // Import service
 
 // Reactive state
-const users = ref([]);
-const isLoading = ref(false);
-const error = ref(null);
+const users = ref([])
+const isLoading = ref(false)
+const error = ref(null)
 
 // Hàm lấy dữ liệu từ tầng service
 async function fetchUsers() {
-  isLoading.value = true;
+  isLoading.value = true
   try {
-    users.value = await userService.getUsers(); // Gọi hàm từ service
+    users.value = await userService.getUsers() // Gọi hàm từ service
   } catch (err) {
-    error.value = "Lỗi khi lấy dữ liệu từ API.";
-    console.error(err);
+    error.value = 'Lỗi khi lấy dữ liệu từ API.'
+    console.error(err)
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
 }
 
 // Gọi API khi component mount
 onMounted(() => {
-  fetchUsers();
-});
+  fetchUsers()
+})
 </script>
 
 <template>

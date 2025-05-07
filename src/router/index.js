@@ -120,6 +120,7 @@ const routes = [
   //CRM Function
   { path: '/crm-markeing-email', component: MKTEmail },
   { path: '/EmailMKT-FormStandard-pannel', component: EmailMKTFormStandardPannel },
+  { path: '/user-list', component: UserList },
 
   //Project Management
   { path: '/ivc-realtor-projects', component: IVCRealtorProject },

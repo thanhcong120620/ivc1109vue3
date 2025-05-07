@@ -1,10 +1,10 @@
 <template>
   <div class="user-management">
     <h1 class="title">User Management</h1>
-    
+
     <!-- Fetch Button -->
     <button class="fetch-button" @click="fetchUsers">Fetch Users</button>
-    
+
     <!-- User List with Pagination -->
     <div class="user-list">
       <ul>
@@ -32,13 +32,13 @@
     <form @submit.prevent="saveUser" class="user-form">
       <input v-model="userForm.fullName" placeholder="Name" required />
       <input v-model="userForm.gmail" placeholder="Email" required />
-      <button type="submit" class="submit-btn">{{ isEditing ? "Update" : "Create" }} User</button>
+      <button type="submit" class="submit-btn">{{ isEditing ? 'Update' : 'Create' }} User</button>
     </form>
   </div>
 </template>
 
 <script>
-import userService from "@/services/userService";
+import userService from '@/api/services/userService'
 
 export default {
   data() {
@@ -46,81 +46,81 @@ export default {
       users: [],
       userForm: {
         id: null,
-        fullName: "",
-        gmail: "",
+        fullName: '',
+        gmail: ''
       },
       isEditing: false,
       currentPage: 1,
-      pageSize: 5, // You can adjust this to show more/less users per page
-    };
+      pageSize: 5 // You can adjust this to show more/less users per page
+    }
   },
   computed: {
     // Calculate the total number of pages
     totalPages() {
-      return Math.ceil(this.users.length / this.pageSize);
+      return Math.ceil(this.users.length / this.pageSize)
     },
 
     // Paginated list of users for the current page
     paginatedUsers() {
-      const startIndex = (this.currentPage - 1) * this.pageSize;
-      const endIndex = startIndex + this.pageSize;
-      return this.users.slice(startIndex, endIndex);
-    },
+      const startIndex = (this.currentPage - 1) * this.pageSize
+      const endIndex = startIndex + this.pageSize
+      return this.users.slice(startIndex, endIndex)
+    }
   },
   methods: {
     async fetchUsers() {
       try {
-        const data = await userService.getAllUsers();
-        this.users = data;
-        console.log(">>> abc", this.users);
+        const data = await userService.getAllUsers()
+        this.users = data
+        console.log('>>> abc', this.users)
       } catch (error) {
-        console.error("Failed to fetch users:", error);
+        console.error('Failed to fetch users:', error)
       }
     },
     async saveUser() {
       try {
         if (this.isEditing) {
-          await userService.updateUser(this.userForm);
+          await userService.updateUser(this.userForm)
         } else {
-          await userService.createUser(this.userForm);
+          await userService.createUser(this.userForm)
         }
-        await this.fetchUsers();
-        this.resetForm();
+        await this.fetchUsers()
+        this.resetForm()
       } catch (error) {
-        console.error("Failed to save user:", error);
+        console.error('Failed to save user:', error)
       }
     },
     async deleteUser(userId) {
       try {
-        await userService.deleteUsers([userId]);
-        await this.fetchUsers();
+        await userService.deleteUsers([userId])
+        await this.fetchUsers()
       } catch (error) {
-        console.error("Failed to delete user:", error);
+        console.error('Failed to delete user:', error)
       }
     },
     editUser(user) {
-      this.userForm = { ...user };
-      this.isEditing = true;
+      this.userForm = { ...user }
+      this.isEditing = true
     },
     resetForm() {
-      this.userForm = { id: null, fullName: "", gmail: "" };
-      this.isEditing = false;
+      this.userForm = { id: null, fullName: '', gmail: '' }
+      this.isEditing = false
     },
     prevPage() {
       if (this.currentPage > 1) {
-        this.currentPage--;
+        this.currentPage--
       }
     },
     nextPage() {
       if (this.currentPage < this.totalPages) {
-        this.currentPage++;
+        this.currentPage++
       }
-    },
+    }
   },
   mounted() {
-    this.fetchUsers();
-  },
-};
+    this.fetchUsers()
+  }
+}
 </script>
 
 <style scoped>
@@ -142,7 +142,7 @@ export default {
   display: block;
   margin: 0 auto 20px;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
@@ -243,7 +243,7 @@ export default {
 
 .user-form button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
