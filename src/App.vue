@@ -1,137 +1,82 @@
+<!-- src/App.vue (phiên bản dùng Vue Router) -->
 <script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-// import AdminIndex from './components/EmptyPage.vue'
-// import HomeView from './views/HomeView.vue'
-import { ref, onMounted, computed } from 'vue'
-import AuthService from './api/services/AuthenticateJWTServices/AuthService'
-import SelectRolePage from './views/SelectRolePage.vue'
-import RegisterPage from './views/RegisterPage.vue'
-import LoginPage from './views/LoginPage.vue'
-import UserHomePage from './views/UserHomePage.vue'
-import ModeratorPanelPage from './views/ModeratorPanelPage.vue'
-import AdminDashboardPage from './views/AdminDashboardPage.vue'
-import OAuthCallbackPage from './views/OAuthCallbackPage.vue'
+import { RouterView, RouterLink } from 'vue-router'
+import { computed, ref } from 'vue'
+import AuthService from './api/services/AuthenticateJWTServices/AuthService.js' // Vẫn cần để lấy currentUser cho nav
+import { useRouter, useRoute } from 'vue-router' // Để logout và kiểm tra route
 
-const currentPage = ref('selectRole') // Trang ban đầu
-const currentUser = ref(AuthService.getCurrentUser())
-const roleForRegistration = ref('')
+const router = useRouter()
+const route = useRoute() // Để lấy thông tin route hiện tại
 
-const isOAuthCallbackPage = computed(() => {
-  // Kiểm tra xem URL có phải là trang callback OAuth2 không
-  return window.location.pathname === '/oauth-callback'
+// currentUser cần được lấy từ một nguồn đáng tin cậy,
+// lý tưởng nhất là Pinia store, được cập nhật khi login/logout.
+// Tạm thời vẫn dùng AuthService, nhưng cần đảm bảo nó reactive hoặc App.vue re-render khi thay đổi.
+// Để App.vue tự re-render khi localStorage thay đổi là không dễ.
+// Đây là lý do Pinia store rất hữu ích.
+// Giả sử chúng ta có một cách để làm currentUser reactive (ví dụ qua event bus đơn giản hoặc Pinia)
+const currentUser = ref(AuthService.getCurrentUser()) // Cần cách làm cho nó reactive
+
+// Hàm này để App.vue biết khi nào nên ẩn nav
+const shouldShowNav = computed(() => {
+  const noNavRoutes = ['OAuthCallback', 'ActivateAccount', 'Login', 'Register'] // Các route không hiển thị nav
+  return !noNavRoutes.includes(route.name)
 })
-
-onMounted(() => {
-  // Kiểm tra xem có phải là trang callback từ OAuth2 không
-  if (isOAuthCallbackPage.value) {
-    currentPage.value = 'oauthCallback'
-  } else {
-    // Nếu đã đăng nhập, chuyển đến trang tương ứng
-    if (currentUser.value) {
-      navigateToUserPage(currentUser.value.roles)
-    }
-  }
-})
-
-function navigateToUserPage(roles) {
-  // KIỂM TRA LOGIC NÀY
-  console.log('Navigating based on roles:', roles) // Thêm log
-  if (roles.includes('ROLE_ADMIN')) {
-    currentPage.value = 'adminDashboard'
-    console.log('Setting currentPage to adminDashboard')
-  } else if (roles.includes('ROLE_MODERATOR')) {
-    currentPage.value = 'moderatorPanel'
-    console.log('Setting currentPage to moderatorPanel')
-  } else if (roles.includes('ROLE_USER')) {
-    currentPage.value = 'userHome'
-    console.log('Setting currentPage to userHome')
-  } else {
-    currentPage.value = 'login' // Fallback nếu không có role phù hợp
-    console.log('No matching role, setting currentPage to login')
-  }
-}
-
-function handleRoleSelectedForRegistration(role) {
-  roleForRegistration.value = role
-  currentPage.value = 'register'
-}
-
-function handleLoginOrRegisterSuccess(userData) {
-  // KIỂM TRA userData và roles
-  console.log('handleLoginOrRegisterSuccess called with userData:', userData)
-  if (userData && userData.roles && Array.isArray(userData.roles)) {
-    currentUser.value = userData
-    navigateToUserPage(userData.roles) // Gọi hàm chuyển trang
-  } else {
-    console.error('Invalid userData received in handleLoginOrRegisterSuccess:', userData)
-    // Xử lý lỗi, ví dụ: hiển thị thông báo, quay về login
-    currentUser.value = null
-    currentPage.value = 'login'
-  }
-}
 
 function handleLogout() {
   AuthService.logout()
-  currentUser.value = null
-  currentPage.value = 'login'
+  currentUser.value = null // Cập nhật state (Pinia sẽ tốt hơn)
+  router.push({ name: 'Login' })
 }
+
+// Theo dõi sự thay đổi trong localStorage (cách đơn giản, không lý tưởng bằng Pinia)
+// window.addEventListener('storage', () => {
+//   currentUser.value = AuthService.getCurrentUser();
+// });
+// onMounted(() => {
+//   currentUser.value = AuthService.getCurrentUser();
+// });
+// Pinia sẽ giải quyết vấn đề reactivity của currentUser tốt hơn.
+// Hiện tại, bạn có thể cần refresh trang để nav cập nhật sau login/logout nếu chỉ dựa vào localStorage.
+// Hoặc, App.vue vẫn lắng nghe event từ các trang con.
 </script>
 
 <template>
-  <div>
-    <!-- <router-view /> -->
-    <!-- <AdminIndex /> -->
-    <!-- <RouterView /> -->
-    <div id="app-container">
-      <nav v.if="!isOAuthCallbackPage">
-        <button @click="currentPage = 'selectRole'">Chọn Role Đăng Ký</button> |
-        <button @click="currentPage = 'login'" v-if="!currentUser">Đăng Nhập</button>
-        <span v-if="currentUser">
-          | Chào, {{ currentUser.username }} ({{ currentUser.roles.join(', ') }}) |
-          <button @click="handleLogout">Đăng Xuất</button>
-        </span>
-      </nav>
-      <hr v.if="!isOAuthCallbackPage" />
+  <div id="main-app-layout">
+    <nav v-if="shouldShowNav">
+      <!-- Ví dụ các link điều hướng -->
+      <RouterLink to="/">Home (AuthApp)</RouterLink> |
+      <RouterLink
+        :to="{ name: 'UserHome' }"
+        v-if="currentUser && currentUser.roles?.includes('ROLE_USER_MKT')"
+        >User Dashboard</RouterLink
+      >
+      |
+      <!-- Thêm các link khác -->
 
-      <div v-if="currentPage === 'selectRole'">
-        <SelectRolePage @role-selected="handleRoleSelectedForRegistration" />
-      </div>
-      <div v-else-if="currentPage === 'register'">
-        <RegisterPage
-          :selectedRole="roleForRegistration"
-          @registered="handleLoginOrRegisterSuccess"
-        />
-      </div>
-      <div v-else-if="currentPage === 'login'">
-        <LoginPage @loggedIn="handleLoginOrRegisterSuccess" />
-      </div>
-      <div v-else-if="currentPage === 'oauthCallback'">
-        <OAuthCallbackPage @oauthSuccess="handleLoginOrRegisterSuccess" />
-      </div>
-      <div v-else-if="currentUser && currentPage === 'userHome'">
-        <UserHomePage :user="currentUser" />
-      </div>
-      <div v-else-if="currentUser && currentPage === 'moderatorPanel'">
-        <ModeratorPanelPage :user="currentUser" />
-      </div>
-      <div v-else-if="currentUser && currentPage === 'adminDashboard'">
-        <AdminDashboardPage :user="currentUser" />
-      </div>
-      <div v-else-if="!currentUser && !isOAuthCallbackPage">
-        <p>Vui lòng chọn một hành động hoặc đăng nhập.</p>
-      </div>
-    </div>
+      <span v-if="!currentUser" style="float: right">
+        <RouterLink :to="{ name: 'Register' }">Đăng Ký</RouterLink> |
+        <RouterLink :to="{ name: 'Login' }">Đăng Nhập</RouterLink>
+      </span>
+      <span v-if="currentUser" style="float: right">
+        Chào, {{ currentUser.username }}
+        <button @click="handleLogout" style="margin-left: 10px">Đăng Xuất</button>
+      </span>
+    </nav>
+    <hr v-if="shouldShowNav" />
+    <RouterView />
   </div>
 </template>
 
 <style>
-#app-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 20px;
-  border: 1px solid #eee;
+/* Styles chung */
+nav {
+  padding: 10px;
+  background-color: #f0f0f0;
 }
-nav button {
+nav a {
   margin-right: 10px;
+}
+hr {
+  margin-bottom: 20px;
 }
 </style>

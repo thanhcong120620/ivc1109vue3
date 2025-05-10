@@ -1,10 +1,10 @@
 <!-- src/views/RegisterPage.vue -->
 <template>
   <div>
-    <h1>
-      Đăng ký với vai trò: <span style="color: #007bff">{{ selectedRole }}</span>
-    </h1>
+    <h1>Đăng ký tài khoản</h1>
+    <!-- Bỏ selectedRole -->
     <p>Vui lòng điền thông tin hoặc chọn đăng ký qua Google/Facebook.</p>
+    <p style="font-style: italic">(Sau khi đăng ký, bạn sẽ cần kích hoạt tài khoản bằng Key)</p>
 
     <form @submit.prevent="handleRegister">
       <div v-if="message" :class="successful ? 'alert-success' : 'alert-danger'">{{ message }}</div>
@@ -47,20 +47,21 @@
     <div class="oauth-login">
       <button @click="initiateFacebookLogin">Đăng ký với Facebook</button>
     </div>
-    <p><a href="#" @click.prevent="$parent.currentPage = 'login'">Đã có tài khoản? Đăng nhập</a></p>
-    <p><a href="#" @click.prevent="$parent.currentPage = 'selectRole'">Chọn lại vai trò</a></p>
+    <p><a href="#" @click.prevent="emit('navigateToLogin')">Đã có tài khoản? Đăng nhập</a></p>
   </div>
 </template>
 
 <script setup>
-import { ref, defineProps, defineEmits } from 'vue'
+// import { ref, defineProps, defineEmits } from 'vue'
+import { ref, defineEmits } from 'vue'
 // Đảm bảo đường dẫn import AuthService là chính xác
-import AuthService from '../api/services/AuthenticateJWTServices/AuthService' // Giả sử AuthService nằm trong src/services
+import AuthService from '../api/services/AuthenticateJWTServices/AuthService'
+const emit = defineEmits(['registered', 'navigateToLogin'])
 
-const props = defineProps({
-  selectedRole: String
-})
-const emit = defineEmits(['registered'])
+// const props = defineProps({
+//   selectedRole: String
+// })
+
 const user = ref({ username: '', email: '', password: '' })
 const confirmPassword = ref('')
 const loading = ref(false)
@@ -76,7 +77,6 @@ async function handleRegister() {
 
   console.log('Submitting registration form with data:', JSON.parse(JSON.stringify(user.value)))
   console.log('Confirm password value:', confirmPassword.value)
-  console.log('Selected role for this form:', props.selectedRole)
 
   if (user.value.password !== confirmPassword.value) {
     errors.value.push('Mật khẩu xác nhận không khớp.')
@@ -97,7 +97,7 @@ async function handleRegister() {
 
     // KIỂM TRA TRỰC TIẾP jwtResponseData
     if (jwtResponseData && jwtResponseData.token) {
-      message.value = 'Đăng ký thành công! Bạn sẽ được chuyển hướng.'
+      message.value = 'Đăng ký thành công! Bạn sẽ được chuyển đến trang để kích hoạt tài khoản.'
       successful.value = true
       // AuthService.register đã lưu token vào localStorage rồi
       setTimeout(() => {
@@ -143,11 +143,11 @@ function initiateGoogleLogin() {
   // Lưu ý: AuthService.initiateOAuth2Login sẽ chuyển hướng trang
   // Nên lưu role vào đâu đó mà OAuthCallbackPage có thể truy cập sau khi redirect
   // Hiện tại backend đang lưu vào session HTTP khi gọi /oauth2/initiate/...
-  AuthService.initiateOAuth2Login('google', props.selectedRole)
+  AuthService.initiateOAuth2Login('google')
 }
 
 function initiateFacebookLogin() {
-  AuthService.initiateOAuth2Login('facebook', props.selectedRole)
+  AuthService.initiateOAuth2Login('facebook')
 }
 </script>
 

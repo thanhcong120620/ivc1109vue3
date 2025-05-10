@@ -18,11 +18,7 @@
       </button>
     </form>
     <hr />
-    <h2>Hoặc đăng nhập bằng:</h2>
-    <p>
-      (Lưu ý: Để đăng nhập OAuth2, vui lòng chọn vai trò từ trang "Chọn Role Đăng Ký" trước nếu bạn
-      là người dùng mới và muốn role được gán đúng)
-    </p>
+    <h2>Có thể tiếp tục bằng:</h2>
     <div class="oauth-login">
       <button @click="initiateGoogleLogin">Đăng nhập với Google</button>
     </div>
@@ -71,14 +67,16 @@ function initiateGoogleLogin() {
   // Khi đăng nhập bằng OAuth2, vai trò đã chọn trước đó (nếu có) sẽ được backend sử dụng
   // Nếu không có vai trò nào được chọn trước (ví dụ người dùng vào thẳng trang login),
   // backend sẽ gán role mặc định (USER) khi tạo user mới qua OAuth2.
-  AuthService.initiateOAuth2Login('google', localStorage.getItem('selectedRoleForOAuth') || 'USER') // Lấy role từ localStorage hoặc mặc định USER
+  // AuthService.initiateOAuth2Login('google', localStorage.getItem('selectedRoleForOAuth') || 'USER') // Lấy role từ localStorage hoặc mặc định USER
+  AuthService.initiateOAuth2Login('google') // Bỏ role
 }
 
 function initiateFacebookLogin() {
-  AuthService.initiateOAuth2Login(
-    'facebook',
-    localStorage.getItem('selectedRoleForOAuth') || 'USER'
-  )
+  // AuthService.initiateOAuth2Login(
+  //   'facebook',
+  //   localStorage.getItem('selectedRoleForOAuth') || 'USER'
+  // )
+  AuthService.initiateOAuth2Login('facebook') // Bỏ role
 }
 
 // Lưu ý: Việc lưu `selectedRoleForOAuth` vào localStorage là một cách đơn giản.

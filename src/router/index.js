@@ -1,6 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomeView.vue'
 
+import UserHomePage from '../views/UserHomePage.vue'
+import OAuthCallbackPage from '../views/OAuthCallbackPage.vue'
+import ModeratorPanelPage from '../views/ModeratorPanelPage.vue'
+import AdminDashboardPage from '../views/AdminDashboardPage.vue'
+import LoginPageOauth from '../views/LoginPage.vue' // Nếu bạn muốn route /login riêng
+import RegisterPage from '../views/RegisterPage.vue' // Nếu bạn muốn route /register riêng
+import ActivateAccountPage from '../views/ActivateAccountPage.vue'
+
+import AuthApp from '../views/IVC-Admin/AuthApp.vue'
+
 //---------------------------TEST------------------------------------
 //Components Test
 import MKTEmailNeumorphism from '../components/test/IVC-CRM-EmailMKT.vue'
@@ -64,7 +74,74 @@ import DanTriFrontDirectNotUseBackEnd from '../components/IVC-Admin/Admin-Realto
 //_____________________________________________________________________________________________________________________________________
 
 const routes = [
-  { path: '/', component: Home },
+  { path: '/vue-home', component: Home },
+  {
+    path: '/',
+    name: 'AuthAppWrapper', // Đặt một tên cho route này
+    component: AuthApp
+    // Nếu AuthApp.vue sẽ quản lý các "trang con" của nó (như login, register, dashboards)
+    // bằng logic currentPage, thì bạn không cần định nghĩa children ở đây cho các trang đó.
+    // Tuy nhiên, nếu bạn muốn các trang đó có URL riêng và được Vue Router quản lý,
+    // bạn có thể định nghĩa chúng là children của AuthApp hoặc các route riêng biệt.
+  },
+
+  // ----- CÁC ROUTE MÀ AuthApp SẼ ĐIỀU HƯỚNG TỚI NẾU DÙNG ROUTER.PUSH -----
+  // Nếu AuthApp.vue vẫn dùng logic 'currentPage' để render,
+  // các route này có thể chưa cần thiết ngay, trừ khi bạn muốn truy cập trực tiếp qua URL
+  // hoặc AuthApp.vue sẽ dùng router.push() để thay đổi URL.
+
+  {
+    path: '/login', // Nếu bạn muốn có URL /login riêng
+    name: 'Login',
+    component: LoginPageOauth, // LoginPage.vue này sẽ được render bởi RouterView trong App.vue
+    // KHÔNG phải là LoginPage được v-if trong AuthApp.vue
+    meta: { requiresGuest: true }
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: RegisterPage,
+    meta: { requiresGuest: true }
+  },
+  {
+    path: '/activate-account',
+    name: 'ActivateAccount',
+    component: ActivateAccountPage,
+    meta: { requiresAuth: true } // Cần User (dù chưa active) để vào đây
+  },
+  {
+    path: '/oauth-callback',
+    name: 'OAuthCallback',
+    component: OAuthCallbackPage
+    // Không cần meta, trang này tự xử lý và điều hướng
+  },
+  {
+    path: '/user/home',
+    name: 'UserHome', // Đây là tên route gây lỗi trước đó
+    component: UserHomePage,
+    meta: {
+      requiresAuth: true,
+      roles: [
+        'ROLE_USER_MKT',
+        'ROLE_USER_FIN',
+        /*...*/ 'ROLE_MODERATOR_MKT',
+        'ROLE_ADMIN_MKT',
+        'ROLE_SUPER_ADMIN'
+      ]
+    }
+  },
+  {
+    path: '/moderator/panel',
+    name: 'ModeratorPanel',
+    component: ModeratorPanelPage,
+    meta: { requiresAuth: true, roles: [/*...*/ 'ROLE_ADMIN_MKT', 'ROLE_SUPER_ADMIN'] }
+  },
+  {
+    path: '/admin/dashboard',
+    name: 'AdminDashboard',
+    component: AdminDashboardPage,
+    meta: { requiresAuth: true, roles: [/*...*/ 'ROLE_SUPER_ADMIN'] }
+  },
 
   //Admin-Realtor-News
   { path: '/admin-realtor-news', component: AdminRealtorNews },
