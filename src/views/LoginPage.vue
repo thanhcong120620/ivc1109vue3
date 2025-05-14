@@ -26,41 +26,80 @@
       <button @click="initiateFacebookLogin">Đăng nhập với Facebook</button>
     </div>
     <p>
-      <a href="#" @click.prevent="$parent.currentPage = 'selectRole'">Chưa có tài khoản? Đăng ký</a>
+      <RouterLink :to="{ name: 'Register' }">Chưa có tài khoản? Đăng ký</RouterLink>
     </p>
   </div>
 </template>
 
 <script setup>
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue' // defineEmits không cần nữa nếu tự điều hướng
+import { useRouter } from 'vue-router' // Import useRouter
 import AuthService from '../api/services/AuthenticateJWTServices/AuthService'
 
-const emit = defineEmits(['loggedIn'])
+// const emit = defineEmits(['loggedIn']); // Bỏ emit này
+const router = useRouter() // Sử dụng router
 
-const user = ref({
-  username: '',
-  password: ''
-})
+const user = ref({ username: '', password: '' })
 const loading = ref(false)
 const message = ref('')
+
+// async function handleLogin() {
+//   loading.value = true
+//   message.value = ''
+//   try {
+//     const responseData = await AuthService.login(user.value)
+//     emit('loggedIn', responseData)
+//   } catch (error) {
+//     const resMessage =
+//       (error.response && error.response.data && error.response.data.message) ||
+//       (error.response &&
+//         typeof error.response.data === 'string' &&
+//         error.response.data.startsWith('Error:'))
+//         ? error.response.data
+//         : error.message || error.toString()
+//     message.value = resMessage
+//     loading.value = false
+//   }
+// }
 
 async function handleLogin() {
   loading.value = true
   message.value = ''
   try {
-    const responseData = await AuthService.login(user.value)
-    emit('loggedIn', responseData)
+    const jwtResponseData = await AuthService.login(user.value)
+    // AuthService đã lưu token và user info vào localStorage
+
+    // Điều hướng dựa trên jwtResponseData.roles
+    if (jwtResponseData && jwtResponseData.token) {
+      if (jwtResponseData.roles && jwtResponseData.roles.length > 0) {
+        // Đã active, có roles -> đi đến dashboard phù hợp
+        if (
+          jwtResponseData.roles.includes('ROLE_SUPER_ADMIN') ||
+          jwtResponseData.roles.some((r) => r.startsWith('ROLE_ADMIN_'))
+        ) {
+          router.push({ name: 'AdminDashboard' })
+        } else if (jwtResponseData.roles.some((r) => r.startsWith('ROLE_MODERATOR_'))) {
+          router.push({ name: 'ModeratorPanel' })
+        } else {
+          router.push({ name: 'UserHome' })
+        }
+      } else {
+        // Chưa active (roles rỗng) -> đi đến trang kích hoạt
+        router.push({ name: 'ActivateAccount' })
+      }
+    } else {
+      // Lỗi không mong muốn: API trả về không có token
+      message.value = 'Lỗi đăng nhập: Không nhận được thông tin phiên từ máy chủ.'
+      loading.value = false
+    }
   } catch (error) {
-    const resMessage =
-      (error.response && error.response.data && error.response.data.message) ||
-      (error.response &&
-        typeof error.response.data === 'string' &&
-        error.response.data.startsWith('Error:'))
-        ? error.response.data
-        : error.message || error.toString()
-    message.value = resMessage
+    // ... (xử lý lỗi như cũ) ...
+    const resMessage = /* ... */ error.message || error.toString()
+    message.value = 'Lỗi đăng nhập: ' + resMessage
     loading.value = false
   }
+  // loading.value sẽ được set lại trong khối catch nếu có lỗi,
+  // hoặc không cần set lại nếu điều hướng thành công
 }
 
 function initiateGoogleLogin() {

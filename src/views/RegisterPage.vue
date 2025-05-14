@@ -2,7 +2,6 @@
 <template>
   <div>
     <h1>Đăng ký tài khoản</h1>
-    <!-- Bỏ selectedRole -->
     <p>Vui lòng điền thông tin hoặc chọn đăng ký qua Google/Facebook.</p>
     <p style="font-style: italic">(Sau khi đăng ký, bạn sẽ cần kích hoạt tài khoản bằng Key)</p>
 
@@ -10,22 +9,18 @@
       <div v-if="message" :class="successful ? 'alert-success' : 'alert-danger'">{{ message }}</div>
       <div>
         <label for="username">Username:</label>
-        <!-- SỬA LẠI: v-model -->
         <input type="text" id="username" v-model="user.username" required />
       </div>
       <div>
         <label for="email">Email:</label>
-        <!-- SỬA LẠI: v-model -->
         <input type="email" id="email" v-model="user.email" required />
       </div>
       <div>
         <label for="password">Password:</label>
-        <!-- SỬA LẠI: v-model -->
         <input type="password" id="password" v-model="user.password" required />
       </div>
       <div>
         <label for="confirmPassword">Confirm Password:</label>
-        <!-- SỬA LẠI: v-model -->
         <input type="password" id="confirmPassword" v-model="confirmPassword" required />
       </div>
       <button type="submit" :disabled="loading">
@@ -47,20 +42,18 @@
     <div class="oauth-login">
       <button @click="initiateFacebookLogin">Đăng ký với Facebook</button>
     </div>
-    <p><a href="#" @click.prevent="emit('navigateToLogin')">Đã có tài khoản? Đăng nhập</a></p>
+    <p>
+      <RouterLink :to="{ name: 'Login' }">Đã có tài khoản? Đăng nhập</RouterLink>
+    </p>
   </div>
 </template>
 
 <script setup>
-// import { ref, defineProps, defineEmits } from 'vue'
-import { ref, defineEmits } from 'vue'
-// Đảm bảo đường dẫn import AuthService là chính xác
+import { ref } from 'vue'
+import { useRouter, RouterLink } from 'vue-router' // Import useRouter và RouterLink
 import AuthService from '../api/services/AuthenticateJWTServices/AuthService'
-const emit = defineEmits(['registered', 'navigateToLogin'])
 
-// const props = defineProps({
-//   selectedRole: String
-// })
+const router = useRouter() // Sử dụng router
 
 const user = ref({ username: '', email: '', password: '' })
 const confirmPassword = ref('')
@@ -76,7 +69,6 @@ async function handleRegister() {
   errors.value = []
 
   console.log('Submitting registration form with data:', JSON.parse(JSON.stringify(user.value)))
-  console.log('Confirm password value:', confirmPassword.value)
 
   if (user.value.password !== confirmPassword.value) {
     errors.value.push('Mật khẩu xác nhận không khớp.')
@@ -90,35 +82,35 @@ async function handleRegister() {
   }
 
   try {
-    // AuthService.register trả về trực tiếp JwtResponse (response.data)
     const jwtResponseData = await AuthService.register(user.value)
+    // AuthService.register đã lưu token và user info vào localStorage
 
-    console.log('Registration API response (jwtResponseData):', jwtResponseData) // Log dữ liệu thực nhận
+    console.log(
+      '[RegisterPage] Registration API response (jwtResponseData):',
+      JSON.parse(JSON.stringify(jwtResponseData))
+    )
 
-    // KIỂM TRA TRỰC TIẾP jwtResponseData
     if (jwtResponseData && jwtResponseData.token) {
       message.value = 'Đăng ký thành công! Bạn sẽ được chuyển đến trang để kích hoạt tài khoản.'
       successful.value = true
-      // AuthService.register đã lưu token vào localStorage rồi
       setTimeout(() => {
-        // Emit đúng jwtResponseData
-        emit('registered', jwtResponseData)
-      }, 1500)
+        // Điều hướng đến trang kích hoạt
+        router.push({ name: 'ActivateAccount' })
+      }, 1500) // Delay để user đọc message
     } else {
-      // Trường hợp API trả về 200 OK nhưng không có token (không nên xảy ra với code backend hiện tại)
       console.error(
-        'Registration successful but no token received in jwtResponseData:',
+        '[RegisterPage] Registration successful but no token received:',
         jwtResponseData
       )
       message.value = 'Đăng ký thất bại: Không nhận được thông tin đăng nhập từ máy chủ.'
       successful.value = false
       errors.value.push('Lỗi hệ thống, không thể tự động đăng nhập.')
+      loading.value = false // Đảm bảo set loading false ở đây
     }
   } catch (error) {
-    // ... xử lý lỗi giữ nguyên như code trước ...
-    console.error('Registration error:', error.response || error)
+    console.error('[RegisterPage] Registration error:', error.response || error)
     const resMessage =
-      /* ... */ (error.response &&
+      (error.response &&
         error.response.data &&
         (error.response.data.message ||
           error.response.data.error ||
@@ -127,22 +119,15 @@ async function handleRegister() {
       error.toString()
     message.value = 'Đăng ký thất bại: ' + resMessage
     successful.value = false
-    if (error.response && error.response.status === 400 && error.response.data) {
-      /* ... */
-    } else if (error.response && error.response.status !== 400) {
-      /* ... */
-    } else {
-      errors.value.push(resMessage)
-    }
-  } finally {
+    // errors.value.push(resMessage); // Có thể thêm vào errors nếu message không đủ
     loading.value = false
   }
+  // Không cần finally { loading.value = false } nếu đã xử lý trong các nhánh trên
+  // nhưng để an toàn có thể giữ lại nếu có nhánh nào đó chưa set loading.
+  // Tuy nhiên, nếu điều hướng thành công, component sẽ unmount, nên không sao.
 }
 
 function initiateGoogleLogin() {
-  // Lưu ý: AuthService.initiateOAuth2Login sẽ chuyển hướng trang
-  // Nên lưu role vào đâu đó mà OAuthCallbackPage có thể truy cập sau khi redirect
-  // Hiện tại backend đang lưu vào session HTTP khi gọi /oauth2/initiate/...
   AuthService.initiateOAuth2Login('google')
 }
 
@@ -152,7 +137,7 @@ function initiateFacebookLogin() {
 </script>
 
 <style scoped>
-/* Thêm CSS nếu cần */
+/* CSS nếu cần */
 .oauth-login button {
   margin: 5px;
 }
@@ -162,8 +147,20 @@ function initiateFacebookLogin() {
 }
 .alert-success {
   color: green;
+  /* Thêm style cho alert-success nếu cần */
+  padding: 10px;
+  border: 1px solid green;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #e6ffed;
 }
 .alert-danger {
   color: red;
+  /* Thêm style cho alert-danger nếu cần */
+  padding: 10px;
+  border: 1px solid red;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #ffe6e6;
 }
 </style>
