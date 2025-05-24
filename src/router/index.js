@@ -10,6 +10,9 @@ import RegisterPage from '../views/RegisterPage.vue' // Nếu bạn muốn route
 import ActivateAccountPage from '../views/ActivateAccountPage.vue'
 import AuthService from '../api/services/AuthenticateJWTServices/AuthService'
 // import AuthApp from '../views/IVC-Admin/AuthApp.vue'
+import AdminRoleManagementPage from '../views/admin/AdminRoleManagementPage.vue'
+import AdminDepartmentManagementPage from '../views/admin/AdminDepartmentManagementPage.vue'
+import AdminUserManagementPage from '../views/admin/AdminUserManagementPage.vue'
 
 //---------------------------TEST------------------------------------
 //Components Test
@@ -75,31 +78,38 @@ import DanTriFrontDirectNotUseBackEnd from '../components/IVC-Admin/Admin-Realto
 //_____________________________________________________________________________________________________________________________________
 
 const routes = [
+  // {
+  //   path: '/',
+  //   name: 'LandingPage', // Hoặc LandingPage, hoặc không cần name nếu chỉ redirect
+  //   redirect: () => {
+  //     const currentUser = AuthService.getCurrentUser()
+  //     const isLoggedIn = !!(currentUser && currentUser.token)
+  //     const userIsActive = isLoggedIn && currentUser.roles && currentUser.roles.length > 0
+
+  //     if (isLoggedIn) {
+  //       if (userIsActive) {
+  //         if (
+  //           currentUser.roles.includes('ROLE_SUPER_ADMIN') ||
+  //           currentUser.roles.some((r) => r.startsWith('ROLE_ADMIN_'))
+  //         ) {
+  //           return { name: 'AdminDashboard' }
+  //         } else if (currentUser.roles.some((r) => r.startsWith('ROLE_MODERATOR_'))) {
+  //           return { name: 'ModeratorPanel' }
+  //         }
+  //         return { name: 'UserHome' }
+  //       } else {
+  //         return { name: 'ActivateAccount' }
+  //       }
+  //     }
+  //     return { name: 'Login' }
+  //   }
+  // },
+
   {
     path: '/',
-    name: 'LandingPage', // Hoặc LandingPage, hoặc không cần name nếu chỉ redirect
-    redirect: () => {
-      const currentUser = AuthService.getCurrentUser()
-      const isLoggedIn = !!(currentUser && currentUser.token)
-      const userIsActive = isLoggedIn && currentUser.roles && currentUser.roles.length > 0
-
-      if (isLoggedIn) {
-        if (userIsActive) {
-          if (
-            currentUser.roles.includes('ROLE_SUPER_ADMIN') ||
-            currentUser.roles.some((r) => r.startsWith('ROLE_ADMIN_'))
-          ) {
-            return { name: 'AdminDashboard' }
-          } else if (currentUser.roles.some((r) => r.startsWith('ROLE_MODERATOR_'))) {
-            return { name: 'ModeratorPanel' }
-          }
-          return { name: 'UserHome' }
-        } else {
-          return { name: 'ActivateAccount' }
-        }
-      }
-      return { name: 'Login' }
-    }
+    name: 'LandingPage', // Đặt tên là LandingPage
+    component: LandingPage, // Trỏ đến component LandingPage
+    meta: { requiresGuest: true } // Landing page thường dành cho guest
   },
 
   {
@@ -173,6 +183,36 @@ const routes = [
         'ROLE_ADMIN_FIN', // Các ADMIN roles
         'ROLE_SUPER_ADMIN'
       ]
+    }
+  },
+
+  {
+    path: '/admin/roles',
+    name: 'AdminRoleManagement',
+    component: AdminRoleManagementPage,
+    meta: {
+      requiresAuth: true,
+      roles: ['ROLE_SUPER_ADMIN'] // Chỉ SUPER_ADMIN
+    }
+  },
+
+  {
+    path: '/admin/departments',
+    name: 'AdminDepartmentManagement',
+    component: AdminDepartmentManagementPage,
+    meta: {
+      requiresAuth: true,
+      roles: ['ROLE_SUPER_ADMIN'] // Chỉ SUPER_ADMIN (hoặc sau này là ADMIN_HRM)
+    }
+  },
+
+  {
+    path: '/admin/users', // URL bạn muốn
+    name: 'AdminUserManagement', // Tên route
+    component: AdminUserManagementPage,
+    meta: {
+      requiresAuth: true,
+      roles: ['ROLE_SUPER_ADMIN'] // Chỉ SUPER_ADMIN
     }
   },
 

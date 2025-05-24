@@ -130,6 +130,15 @@ function handlePageLogout() {
     <div v-else>
       <p>Đang tải thông tin người dùng...</p>
     </div>
+    <ul>
+      <li>
+        <RouterLink :to="{ name: 'AdminRoleManagement' }">Quản lý Vai trò</RouterLink>
+      </li>
+      <li>
+        <RouterLink :to="{ name: 'AdminDepartmentManagement' }">Quản lý Phòng Ban</RouterLink>
+      </li>
+      <RouterLink :to="{ name: 'AdminUserManagement' }">Quản lý Người dùng</RouterLink>
+    </ul>
   </div>
 </template>
 
