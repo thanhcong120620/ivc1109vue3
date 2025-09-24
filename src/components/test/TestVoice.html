@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Chuyển văn bản thành giọng nói (Tiếng Việt)</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+      }
+
+      input {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      #status {
+        color: red;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <input placeholder="Nhập nội dung..." id="text" />
+    <select id="voiceSelect"></select>
+    <button onclick="speakText()">Đọc</button>
+    <div id="status"></div>
+
+    <script>
+      // Kiểm tra hỗ trợ Web Speech API
+      if (!('speechSynthesis' in window)) {
+        document.getElementById('status').textContent =
+          'Trình duyệt không hỗ trợ chuyển văn bản thành giọng nói.'
+        //return; // Remove this return statement. It's outside a function.
+      }
+
+      let voices = []
+      const voiceSelect = document.getElementById('voiceSelect')
+
+      // Hàm tải danh sách giọng nói
+      function loadVoices() {
+        voices = speechSynthesis.getVoices()
+        voiceSelect.innerHTML = '' // Xóa các tùy chọn cũ
+
+        voices.forEach((voice) => {
+          const option = document.createElement('option')
+          option.value = voice.name
+          option.textContent = `${voice.name} (${voice.lang})`
+          voiceSelect.appendChild(option)
+        })
+        console.log('Danh sách giọng nói đã tải:', voices) // Debug
+      }
+
+      // Tải giọng nói ngay lập tức và khi danh sách giọng thay đổi
+      loadVoices()
+      speechSynthesis.onvoiceschanged = loadVoices
+
+      // Thử tải lại giọng nói sau một khoảng thời gian ngắn (để xử lý trường hợp giọng nói chưa tải xong)
+      setTimeout(loadVoices, 500)
+      setTimeout(loadVoices, 1000)
+
+      function speakText() {
+        const text = document.getElementById('text').value.trim()
+        const status = document.getElementById('status')
+        const selectedVoiceName = voiceSelect.value
+
+        if (text === '') {
+          status.textContent = 'Vui lòng nhập nội dung để đọc.'
+          return
+        }
+
+        // Tạo đối tượng utterance
+        const utterance = new SpeechSynthesisUtterance(text)
+
+        // Tìm giọng đã chọn
+        const selectedVoice = voices.find((voice) => voice.name === selectedVoiceName)
+
+        if (selectedVoice) {
+          utterance.voice = selectedVoice
+          utterance.lang = 'vi-VN' // Đặt ngôn ngữ tiếng Việt một cách rõ ràng
+          status.textContent = ''
+        } else {
+          status.textContent = 'Không tìm thấy giọng đã chọn. Sử dụng giọng mặc định.'
+        }
+
+        // Đọc văn bản
+        speechSynthesis.cancel() // Hủy các utterance đang chạy (nếu có)
+        console.log('Chuẩn bị phát:', utterance) // Debug
+        speechSynthesis.speak(utterance)
+      }
+
+      console.log('Script đã tải.') // Debug: Xác nhận script đã chạy
+    </script>
+  </body>
+</html>
